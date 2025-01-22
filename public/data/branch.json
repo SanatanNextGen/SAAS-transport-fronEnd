@@ -1,0 +1,46 @@
+[
+  {
+    "branchId": "B001",
+    "branchName": "Main Branch",
+    "builtyNumberFrom": "0001",
+    "builtyNumberTo": "1000",
+    "address": {
+      "street": "123 Main St",
+      "city": "Springfield",
+      "state": "IL",
+      "postalCode": "62701",
+      "country": "USA"
+    },
+    "contact": {
+      "phone": "123-456-7890",
+      "email": "branchmain@example.com"
+    },
+    "branchManager": {
+      "managerName": "Alice Johnson",
+      "managerContact": "alice.johnson@example.com",
+      "managerPhone": "987-654-3210"
+    }
+  },
+  {
+    "branchId": "B002",
+    "branchName": "Gurugram Branch",
+    "builtyNumberFrom": "1001",
+    "builtyNumberTo": "2000",
+    "address": {
+      "street": "123 Main St",
+      "city": "Springfield",
+      "state": "IL",
+      "postalCode": "62701",
+      "country": "Gurugram"
+    },
+    "contact": {
+      "phone": "123-456-7890",
+      "email": "branchmain@example.com"
+    },
+    "branchManager": {
+      "managerName": "Alice Johnson",
+      "managerContact": "alice.johnson@example.com",
+      "managerPhone": "987-654-3210"
+    }
+  }
+]
