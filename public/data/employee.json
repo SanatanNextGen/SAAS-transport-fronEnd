@@ -1,0 +1,57 @@
+[
+  {
+    "id": "E001",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dob": "1990-05-15",
+    "gender": "Male",
+    "contact": {
+      "phone": "123-456-7890",
+      "email": "johndoe@example.com"
+    },
+    "address": {
+      "street": "123 Main St",
+      "city": "Springfield",
+      "state": "IL",
+      "postalCode": "62701",
+      "country": "USA"
+    },
+    "position": {
+      "title": "Driver",
+      "department": "Operations",
+      "hireDate": "2023-01-15",
+      "salary": 45000,
+      "workShift": "Morning",
+      "licenseDetails": {
+        "licenseNumber": "D123456789",
+        "licenseType": "CDL",
+        "issueDate": "2015-06-10",
+        "expiryDate": "2025-06-10"
+      }
+    },
+    "emergencyContact": {
+      "name": "Jane Doe",
+      "relation": "Spouse",
+      "phone": "987-654-3210",
+      "email": "janedoe@example.com"
+    },
+    "documents": [
+      {
+        "documentType": "Driver's License",
+        "documentName": "Commercial Driver's License",
+        "expiryDate": "2025-06-10",
+        "documentUrl": "/documents/drivers_license_d123456789.pdf"
+      },
+      {
+        "documentType": "Medical Certificate",
+        "documentName": "Health Examination",
+        "expiryDate": "2024-01-15",
+        "documentUrl": "/documents/medical_certificate_johndoe.pdf"
+      }
+    ],
+    "status": {
+      "employmentStatus": "Active",
+      "lastChecked": "2023-01-15"
+    }
+  }
+]

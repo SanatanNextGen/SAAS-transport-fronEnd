@@ -1,0 +1,47 @@
+[
+  {
+    "id": "C001",
+    "firstName": "John ",
+    "lastName": " Doe",
+    "contact": {
+      "email": "johndoe@example.com",
+      "phone": "123-456-7890"
+    },
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zip": "90210"
+    },
+    "gstin": "27ABCDE1234F1Z5",
+    "bankDetails": {
+      "accountNumber": "123456789012",
+      "ifscCode": "ABC1234567",
+      "bankName": "Bank of Example"
+    },
+    "createdAt": "2023-01-15T10:00:00Z",
+    "updatedAt": "2023-10-01T12:00:00Z"
+  },
+  {
+    "id": "C002",
+    "name": "Jane Smith",
+    "contact": {
+      "email": "janesmith@example.com",
+      "phone": "987-654-3210"
+    },
+    "address": {
+      "street": "456 Elm St",
+      "city": "Othertown",
+      "state": "NY",
+      "zip": "10001"
+    },
+    "gstin": "29ABCDE5678F1Z6",
+    "bankDetails": {
+      "accountNumber": "987654321012",
+      "ifscCode": "XYZ9876543",
+      "bankName": "Another Bank"
+    },
+    "createdAt": "2023-02-20T09:30:00Z",
+    "updatedAt": "2023-10-01T12:00:00Z"
+  }
+]
