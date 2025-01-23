@@ -194,7 +194,6 @@ const BranchManagement = () => {
         </div>
       </div>
 
-      {/* Table Section */}
       <div className="mt-4 w-[85vw] border border-stroke bg-white pb-4 pt-6 text-center shadow-default placeholder:rounded-sm dark:border-strokedark dark:bg-boxdark sm:px-7.5 lg:w-[60vw] lg:px-8 xl:w-[70vw] xl:pb-1">
         <div className="overflow-x-auto">
           <table className="w-full table-auto">
@@ -270,6 +269,20 @@ const BranchManagement = () => {
                             </td>
                           );
                         }
+                        // Check if the object is a document type and show the upload option
+                        if (header === "document") {
+                          return (
+                            <td
+                              key={header}
+                              className="border border-gray-200 px-4 py-2"
+                            >
+                              <input
+                                type="file"
+                                accept="application/pdf,image/*"
+                              />
+                            </td>
+                          );
+                        }
                         return (
                           <td
                             key={header}
@@ -295,9 +308,11 @@ const BranchManagement = () => {
           </table>
         </div>
       </div>
+
+      {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Branch"}
+          title={"Add New Vehicle"}
           onClose={handleCloseModal}
           fields={transformToFields(defaultData)}
           onSubmit={handleSubmit}
@@ -305,7 +320,7 @@ const BranchManagement = () => {
       )}
       {isEditModalOpen && selectedData && (
         <FormModal
-          title={"Edit Branch"}
+          title={"Edit Vehicle"}
           onClose={handleCloseModal}
           fields={transformToFields(selectedData)}
           onSubmit={handleSubmit}

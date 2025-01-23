@@ -5,47 +5,19 @@
     "type": "Multi Excel",
     "ownerName": "Sanatan",
     "ownerContact": "7880001415",
-    "registration": {
-      "number": "ABC123",
-      "issuedBy": "DMV Springfield",
-      "issueDate": "2023-01-01",
-      "expiryDate": "2024-01-01",
-      "insuranceDetails": {
-        "provider": "StateFarm",
-        "policyNumber": "INS-123456",
-        "expiryDate": "2024-01-01"
-      }
-    },
-
-    "status": {
-      "availability": true,
-      "condition": "Good",
-      "lastChecked": "2023-12-10"
-    },
-
-    "fuel": {
-      "type": "Desiel",
-      "tankCapacity": 50,
-      "currentLevel": 20
-    },
-    "odometer": {
-      "mileage": 6,
-      "lastChecked": "2023-12-10"
-    },
-    "documents": [
-      {
-        "type": "Registration",
-        "name": "Vehicle Registration Certificate",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/vehicle_registration_abc123.pdf"
-      },
-      {
-        "type": "Insurance",
-        "name": "StateFarm Insurance Policy",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/insurance_policy_ins-123456.pdf"
-      }
-    ]
+    "ownerEmail": "demo@gmail.com",
+    "registrationNumber": "ABC123",
+    "registrationIssuedBy": "DMV Springfield",
+    "registrationIssueDate": "2023-01-01",
+    "registrationExpiryDate": "2024-01-01",
+    "insuranceProvider": "StateFarm",
+    "insurancePolicyNumber": "INS-123456",
+    "insuranceExpiryDate": "2024-01-01",
+    "fuelType": "Desiel",
+    "fuelTankCapacity": 50,
+    "mileage": 6,
+    "mileageLastChecked": "2023-12-10",
+    "documents": []
   },
 
   {
@@ -54,47 +26,19 @@
     "type": "Multi Excel",
     "ownerName": "Sanatan",
     "ownerContact": "7880001415",
-    "registration": {
-      "number": "ABC123",
-      "issuedBy": "DMV Springfield",
-      "issueDate": "2023-01-01",
-      "expiryDate": "2024-01-01",
-      "insuranceDetails": {
-        "provider": "StateFarm",
-        "policyNumber": "INS-123456",
-        "expiryDate": "2024-01-01"
-      }
-    },
-
-    "status": {
-      "availability": true,
-      "condition": "Good",
-      "lastChecked": "2023-12-10"
-    },
-
-    "fuel": {
-      "type": "Desiel",
-      "tankCapacity": 50,
-      "currentLevel": 20
-    },
-    "odometer": {
-      "mileage": 6,
-      "lastChecked": "2023-12-10"
-    },
-    "documents": [
-      {
-        "type": "Registration",
-        "name": "Vehicle Registration Certificate",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/vehicle_registration_abc123.pdf"
-      },
-      {
-        "type": "Insurance",
-        "name": "StateFarm Insurance Policy",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/insurance_policy_ins-123456.pdf"
-      }
-    ]
+    "ownerEmail": "demo@gmail.com",
+    "registrationNumber": "ABC123",
+    "registrationIssuedBy": "DMV Springfield",
+    "registrationIssueDate": "2023-01-01",
+    "registrationExpiryDate": "2024-01-01",
+    "insuranceProvider": "StateFarm",
+    "insurancePolicyNumber": "INS-123456",
+    "insuranceExpiryDate": "2024-01-01",
+    "fuelType": "Desiel",
+    "fuelTankCapacity": 50,
+    "mileage": 6,
+    "mileageLastChecked": "2023-12-10",
+    "documents": []
   },
   {
     "id": "V003",
@@ -102,190 +46,18 @@
     "type": "Multi Excel",
     "ownerName": "Sanatan",
     "ownerContact": "7880001415",
-    "registration": {
-      "number": "ABC123",
-      "issuedBy": "DMV Springfield",
-      "issueDate": "2023-01-01",
-      "expiryDate": "2024-01-01",
-      "insuranceDetails": {
-        "provider": "StateFarm",
-        "policyNumber": "INS-123456",
-        "expiryDate": "2024-01-01"
-      }
-    },
-
-    "status": {
-      "availability": true,
-      "condition": "Good",
-      "lastChecked": "2023-12-10"
-    },
-
-    "fuel": {
-      "type": "Desiel",
-      "tankCapacity": 50,
-      "currentLevel": 20
-    },
-    "odometer": {
-      "mileage": 6,
-      "lastChecked": "2023-12-10"
-    },
-    "documents": [
-      {
-        "type": "Registration",
-        "name": "Vehicle Registration Certificate",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/vehicle_registration_abc123.pdf"
-      },
-      {
-        "type": "Insurance",
-        "name": "StateFarm Insurance Policy",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/insurance_policy_ins-123456.pdf"
-      }
-    ]
-  },
-  {
-    "id": "V004",
-    "vehicleBrand": "Bharat Benz",
-    "type": "Multi Excel",
-    "ownerName": "Sanatan",
-    "ownerContact": "7880001415",
-    "registration": {
-      "number": "ABC123",
-      "issuedBy": "DMV Springfield",
-      "issueDate": "2023-01-01",
-      "expiryDate": "2024-01-01",
-      "insuranceDetails": {
-        "provider": "StateFarm",
-        "policyNumber": "INS-123456",
-        "expiryDate": "2024-01-01"
-      }
-    },
-
-    "status": {
-      "availability": true,
-      "condition": "Good",
-      "lastChecked": "2023-12-10"
-    },
-
-    "fuel": {
-      "type": "Desiel",
-      "tankCapacity": 50,
-      "currentLevel": 20
-    },
-    "odometer": {
-      "mileage": 6,
-      "lastChecked": "2023-12-10"
-    },
-    "documents": [
-      {
-        "type": "Registration",
-        "name": "Vehicle Registration Certificate",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/vehicle_registration_abc123.pdf"
-      },
-      {
-        "type": "Insurance",
-        "name": "StateFarm Insurance Policy",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/insurance_policy_ins-123456.pdf"
-      }
-    ]
-  },
-  {
-    "id": "V005",
-    "vehicleBrand": "Bharat Benz",
-    "type": "Multi Excel",
-    "ownerName": "Sanatan",
-    "ownerContact": "7880001415",
-    "registration": {
-      "number": "ABC123",
-      "issuedBy": "DMV Springfield",
-      "issueDate": "2023-01-01",
-      "expiryDate": "2024-01-01",
-      "insuranceDetails": {
-        "provider": "StateFarm",
-        "policyNumber": "INS-123456",
-        "expiryDate": "2024-01-01"
-      }
-    },
-
-    "status": {
-      "availability": true,
-      "condition": "Good",
-      "lastChecked": "2023-12-10"
-    },
-
-    "fuel": {
-      "type": "Desiel",
-      "tankCapacity": 50,
-      "currentLevel": 20
-    },
-    "odometer": {
-      "mileage": 6,
-      "lastChecked": "2023-12-10"
-    },
-    "documents": [
-      {
-        "type": "Registration",
-        "name": "Vehicle Registration Certificate",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/vehicle_registration_abc123.pdf"
-      },
-      {
-        "type": "Insurance",
-        "name": "StateFarm Insurance Policy",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/insurance_policy_ins-123456.pdf"
-      }
-    ]
-  },
-  {
-    "id": "V006",
-    "vehicleBrand": "Bharat Benz",
-    "type": "Multi Excel",
-    "ownerName": "Sanatan",
-    "ownerContact": "7880001415",
-    "registration": {
-      "number": "ABC123",
-      "issuedBy": "DMV Springfield",
-      "issueDate": "2023-01-01",
-      "expiryDate": "2024-01-01",
-      "insuranceDetails": {
-        "provider": "StateFarm",
-        "policyNumber": "INS-123456",
-        "expiryDate": "2024-01-01"
-      }
-    },
-
-    "status": {
-      "availability": true,
-      "condition": "Good",
-      "lastChecked": "2023-12-10"
-    },
-
-    "fuel": {
-      "type": "Desiel",
-      "tankCapacity": 50,
-      "currentLevel": 20
-    },
-    "odometer": {
-      "mileage": 6,
-      "lastChecked": "2023-12-10"
-    },
-    "documents": [
-      {
-        "type": "Registration",
-        "name": "Vehicle Registration Certificate",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/vehicle_registration_abc123.pdf"
-      },
-      {
-        "type": "Insurance",
-        "name": "StateFarm Insurance Policy",
-        "expiryDate": "2024-01-01",
-        "documentUrl": "/documents/insurance_policy_ins-123456.pdf"
-      }
-    ]
+    "ownerEmail": "demo@gmail.com",
+    "registrationNumber": "ABC123",
+    "registrationIssuedBy": "DMV Springfield",
+    "registrationIssueDate": "2023-01-01",
+    "registrationExpiryDate": "2024-01-01",
+    "insuranceProvider": "StateFarm",
+    "insurancePolicyNumber": "INS-123456",
+    "insuranceExpiryDate": "2024-01-01",
+    "fuelType": "Desiel",
+    "fuelTankCapacity": 50,
+    "mileage": 6,
+    "mileageLastChecked": "2023-12-10",
+    "documents": []
   }
 ]

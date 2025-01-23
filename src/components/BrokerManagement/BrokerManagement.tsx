@@ -176,7 +176,7 @@ const BrokerManagement = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
-      {/* Add Employee Button */}
+      {/* Add Broker Button */}
       <div className="flex justify-between">
         <div className="mb-6 text-center">
           <Link
@@ -273,6 +273,20 @@ const BrokerManagement = () => {
                             </td>
                           );
                         }
+                        // Check if the object is a document type and show the upload option
+                        if (header === "document") {
+                          return (
+                            <td
+                              key={header}
+                              className="border border-gray-200 px-4 py-2"
+                            >
+                              <input
+                                type="file"
+                                accept="application/pdf,image/*"
+                              />
+                            </td>
+                          );
+                        }
                         return (
                           <td
                             key={header}
@@ -299,9 +313,10 @@ const BrokerManagement = () => {
         </div>
       </div>
 
+      {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Employee"}
+          title={"Add New Vehicle"}
           onClose={handleCloseModal}
           fields={transformToFields(defaultData)}
           onSubmit={handleSubmit}
@@ -309,7 +324,7 @@ const BrokerManagement = () => {
       )}
       {isEditModalOpen && selectedData && (
         <FormModal
-          title={"Edit Employee"}
+          title={"Edit Vehicle"}
           onClose={handleCloseModal}
           fields={transformToFields(selectedData)}
           onSubmit={handleSubmit}

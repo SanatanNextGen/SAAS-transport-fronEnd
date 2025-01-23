@@ -4,43 +4,25 @@
     "branchName": "Main Branch",
     "builtyNumberFrom": "0001",
     "builtyNumberTo": "1000",
-    "address": {
-      "street": "123 Main St",
-      "city": "Springfield",
-      "state": "IL",
-      "postalCode": "62701",
-      "country": "USA"
-    },
-    "contact": {
-      "phone": "123-456-7890",
-      "email": "branchmain@example.com"
-    },
-    "branchManager": {
-      "managerName": "Alice Johnson",
-      "managerContact": "alice.johnson@example.com",
-      "managerPhone": "987-654-3210"
-    }
+    "address": "123 Main St, Springfield, IL, 62701, USA",
+    "branch contact": "123-456-7890 ",
+    "branch email": " branchmain@example.com",
+    "branch Manager Name": "Alice Johnson",
+    "branchManager Contact": " 987-654-3210",
+    "branchManagerEmail": "alice.johnson@example.com",
+    "document": null
   },
   {
     "id": "B002",
-    "branchName": "Gurugram Branch",
-    "builtyNumberFrom": "1001",
-    "builtyNumberTo": "2000",
-    "address": {
-      "street": "123 Main St",
-      "city": "Springfield",
-      "state": "IL",
-      "postalCode": "62701",
-      "country": "Gurugram"
-    },
-    "contact": {
-      "phone": "123-456-7890",
-      "email": "branchmain@example.com"
-    },
-    "branchManager": {
-      "managerName": "Alice Johnson",
-      "managerContact": "alice.johnson@example.com",
-      "managerPhone": "987-654-3210"
-    }
+    "branchName": "Main Branch",
+    "builtyNumberFrom": "0001",
+    "builtyNumberTo": "1000",
+    "address": "123MainSt,Springfield,IL, 62701, USA",
+    "branch contact": "1234567890 ",
+    "branch email": " branchmain@example.com",
+    "branch Manager Name": "Alice Johnson",
+    "branchManager Contact": " 9876543210",
+    "branchManagerEmail": "alice.johnson@example.com",
+    "document": null
   }
 ]

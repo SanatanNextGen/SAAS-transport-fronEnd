@@ -271,6 +271,20 @@ const VehicleManagement = () => {
                             </td>
                           );
                         }
+                        // Check if the object is a document type and show the upload option
+                        if (header === "document") {
+                          return (
+                            <td
+                              key={header}
+                              className="border border-gray-200 px-4 py-2"
+                            >
+                              <input
+                                type="file"
+                                accept="application/pdf,image/*"
+                              />
+                            </td>
+                          );
+                        }
                         return (
                           <td
                             key={header}

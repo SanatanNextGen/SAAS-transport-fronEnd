@@ -66,7 +66,7 @@ export default function FormModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50 text-black">
+    <div className="fixed mt-10 inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50 text-black">
       <div className="relative mx-4 w-full max-w-lg rounded-lg bg-white p-6 shadow-lg">
         <div className="text-right font-extrabold " onClick={onClose}>
           X
