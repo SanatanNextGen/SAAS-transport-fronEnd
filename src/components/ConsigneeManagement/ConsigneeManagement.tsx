@@ -197,7 +197,7 @@ const ConsigneeManagement = () => {
       <div className="overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="">
               <th className="border border-gray-200 px-4 py-2">Actions</th>
               {headers.map((header) => (
                 <th key={header} className="border border-gray-200 px-4 py-2">
