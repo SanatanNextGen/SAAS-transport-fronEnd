@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const FormPage: React.FC = () => {
   return (
@@ -68,7 +69,7 @@ const FormPage: React.FC = () => {
                     Expiry Date:
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter Expiry Date"
                   />
@@ -84,7 +85,7 @@ const FormPage: React.FC = () => {
                 </label>
                 <div className="my-4 border-b-2 border-gray-300"></div>
                 <label className="text-xl font-semibold text-blue-700">
-                  At Owner&apos;s Risk/Insurance
+                  At Owner's Risk/Insurance
                 </label>
                 <div className="my-4 border-b-2 border-gray-300"></div>
               </div>
@@ -140,7 +141,7 @@ const FormPage: React.FC = () => {
                 <div className="flex flex-col">
                   <label className="font-semibold text-gray-700">Date:</label>
                   <input
-                    type="text"
+                    type="date"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter Date"
                   />
@@ -172,7 +173,7 @@ const FormPage: React.FC = () => {
                 <div className="flex flex-col space-y-4">
                   <label className="font-semibold text-gray-700">Date:</label>
                   <input
-                    type="text"
+                    type="date"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter Date"
                   />
@@ -199,7 +200,7 @@ const FormPage: React.FC = () => {
               {/* Consignor Section */}
               <div className="flex flex-col">
                 <label className="font-semibold text-gray-700">
-                  Consignor&apos;s Name & Address :
+                  Consignor's Name & Address :
                 </label>
                 <textarea
                   className="rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
@@ -216,7 +217,7 @@ const FormPage: React.FC = () => {
               {/* Consignee Section */}
               <div className="mt-6 flex flex-col">
                 <label className="font-semibold text-gray-700">
-                  Consignee&apos;s Name & Address:
+                  Consignee's Name & Address:
                 </label>
                 <textarea
                   className="rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
@@ -238,7 +239,7 @@ const FormPage: React.FC = () => {
                 <div className="flex flex-col">
                   <label className="font-semibold text-gray-700">From:</label>
                   <input
-                    type="text"
+                    type="date"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                     placeholder="From"
                   />
@@ -249,7 +250,7 @@ const FormPage: React.FC = () => {
                 <div className="flex flex-col">
                   <label className="font-semibold text-gray-700">To:</label>
                   <input
-                    type="text"
+                    type="date"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                     placeholder="To"
                   />
@@ -259,8 +260,8 @@ const FormPage: React.FC = () => {
             </div>
           </div>
 
-             <div className="mb-4 border-b border-gray-300 pb-2">
-            <table className="w-1/2 xl:w-full border-collapse border border-gray-300 text-center">
+          <div className="mb-4 border-b border-gray-300 pb-2">
+            <table className="w-1/2 border-collapse border border-gray-300 text-center xl:w-full">
               <thead>
                 <tr>
                   <th className="border border-gray-300 p-2">Package</th>
@@ -292,21 +293,21 @@ const FormPage: React.FC = () => {
                   <td className="border  border-gray-300 p-2">
                     <input
                       type="text"
-                      className=" border h-[350px]  border-gray-300 p-1 text-center"
+                      className=" h-[350px] border  border-gray-300 p-1 text-center"
                       placeholder=""
                     />
                   </td>
                   <td className="border border-gray-300 p-2">
                     <input
                       type="text"
-                      className=" border  h-[350px]  border-gray-300 p-1 text-center"
+                      className=" h-[350px]  border  border-gray-300 p-1 text-center"
                       placeholder=""
                     />
                   </td>
                   <td className="border border-gray-300 p-2">
                     <input
                       type="text"
-                      className=" border  h-[350px]  border-gray-300 p-1 text-center"
+                      className=" h-[350px]  border  border-gray-300 p-1 text-center"
                       placeholder=""
                     />
                   </td>
@@ -350,31 +351,27 @@ const FormPage: React.FC = () => {
                         />
                       </div>
 
-                      <div className="flex justify-between">
+                      <div className="flex gap-5">
+                        <input
+                          type="checkbox"
+                          id="totalFreight"
+                          className="h-5 w-5"
+                        />
                         <label className="font-semibold">Total Freight:</label>
-                        <input
-                          type="text"
-                          className=" border border-gray-300 p-1 text-center"
-                          placeholder=""
-                        />
                       </div>
 
-                      <div className="flex justify-between">
+                      <div className="flex gap-5">
+                        <input
+                          type="checkbox"
+                          id="toBeBilled"
+                          className="h-5 w-5"
+                        />
                         <label className="font-semibold">To Be Billed:</label>
-                        <input
-                          type="text"
-                          className=" border border-gray-300 p-1 text-center"
-                          placeholder=""
-                        />
                       </div>
 
-                      <div className="flex justify-between">
+                      <div className="flex gap-5">
+                        <input type="checkbox" id="toPay" className="h-5 w-5" />
                         <label className="font-semibold">To Pay:</label>
-                        <input
-                          type="text"
-                          className=" border border-gray-300 p-1 text-center"
-                          placeholder=""
-                        />
                       </div>
                     </div>
                   </td>
@@ -478,7 +475,7 @@ const FormPage: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  className="rounded-lg w-1/2 border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500"
+                  className="w-1/2 rounded-lg border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500"
                   placeholder=""
                 />
               </div>
@@ -487,7 +484,7 @@ const FormPage: React.FC = () => {
                 <label className="font-semibold text-gray-700">Value:</label>
                 <input
                   type="text"
-                  className="rounded-lg w-1/2 border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500"
+                  className="w-1/2 rounded-lg border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500"
                   placeholder=""
                 />
               </div>
