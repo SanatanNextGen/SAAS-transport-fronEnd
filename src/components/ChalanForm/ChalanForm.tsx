@@ -105,7 +105,7 @@ const FormPage: React.FC = () => {
                     <div className="my-4 border-b-2 border-gray-300"></div>
                   </div>
                   {selectedData.map((bilty, index) => (
-                    <div className="grid gap-6 sm:grid-cols-2">
+                    <div key={bilty.id} className="grid gap-6 sm:grid-cols-2">
                       <div className="flex flex-col">
                         <label className="font-semibold text-gray-700">
                           Branch:
@@ -146,7 +146,7 @@ const FormPage: React.FC = () => {
                       <div className="my-4 border-b-2 border-gray-300"></div>
                     </div>
                     {selectedData.map((bilty, index) => (
-                      <div className="flex flex-col space-y-4">
+                      <div key={bilty.id} className="flex flex-col space-y-4">
                         <label className="font-semibold text-gray-700">
                           Vehicle No:
                         </label>
@@ -162,7 +162,7 @@ const FormPage: React.FC = () => {
                 </div>
               </div>
               {selectedData.map((bilty, index) => (
-                <div className="flex flex-col gap-6 sm:flex-row">
+                <div key={bilty.id} className="flex flex-col gap-6 sm:flex-row">
                   <div className="flex flex-col sm:w-1/2">
                     <label className="font-semibold text-gray-700">
                       Loading Stn:
