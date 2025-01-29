@@ -1,4 +1,17 @@
 import { useState } from "react";
+import { FaPlus } from "react-icons/fa"; // Import the Plus Icon from react-icons
+
+interface TyreDetail {
+  TyreNo: string;
+  TyreType: string;
+  Makers: string;
+  FrontRear: string;
+  FittedOn: string;
+  BillNo: string;
+  BillDate: string;
+  StartKm: number;
+  EndKm: number;
+}
 
 interface Field {
   id: string;
@@ -21,7 +34,6 @@ export default function FormModal({
   title,
   onSubmit,
 }: FormModalProps) {
-  // Create a state object to manage form values
   const [formData, setFormData] = useState<{ [key: string]: any }>(
     fields.reduce(
       (acc, field) => {
@@ -32,43 +44,101 @@ export default function FormModal({
     ),
   );
 
-  // Handle form input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, type, checked, value, files } = e.target;
-    if (type === "checkbox") {
-      setFormData({
-        ...formData,
-        [name]: checked,
-      });
-    } else if (type === "file") {
-      // Handle file input change
-      setFormData({
-        ...formData,
-        [name]: files ? Array.from(files) : [], // Convert FileList to an array of files
-      });
+  const [tyreDetails, setTyreDetails] = useState<TyreDetail[]>([]); // Empty initial state for tyre details
+  const [imagePreview, setImagePreview] = useState<string | null>(null); // State for image preview
+
+  const handleUploadClick = (fieldId: string) => {
+    // Create a file input element dynamically
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*"; // Accept only image files
+
+    // Trigger the file input when the button is clicked
+    input.click();
+
+    // Handle the file selection when the user selects a file
+    input.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement; // Cast event.target to HTMLInputElement
+      if (target && target.files) {
+        const file = target.files[0]; // Get the selected file
+        if (file) {
+          // Update only the specific field (fieldId) in formData for file upload
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            [fieldId]: file, // Update the file field only
+          }));
+
+          // Generate a preview URL for the image
+          const previewUrl = URL.createObjectURL(file);
+          setImagePreview(previewUrl); // Set the image preview URL
+        }
+      }
+    });
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    fieldId: string,
+    tyreIndex?: number,
+  ) => {
+    const { name, type, checked, value } = e.target;
+
+    if (tyreIndex !== undefined) {
+      // Handle tyre details input change
+      const updatedTyreDetails = [...tyreDetails];
+      updatedTyreDetails[tyreIndex] = {
+        ...updatedTyreDetails[tyreIndex],
+        [name]: value,
+      };
+      setTyreDetails(updatedTyreDetails);
     } else {
+      // Handle general form data input change
       setFormData({
         ...formData,
-        [name]: value, // For other types, set the string or number value
+        [name]: value,
       });
     }
   };
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent the default form submission
-    onSubmit(formData); // Pass the form data to the parent component
+    const fullFormData = { ...formData, tyreDetails }; // Include tyre details in the form data
+    onSubmit(fullFormData); // Pass the form data to the parent component
   };
 
-  const capitalizeWords = (str: any) => {
-    if (!str) return str;
-    return str.replace(/\b\w/g, (char: any) => char.toUpperCase());
+  const addTyreDetail = () => {
+    // Add a new empty tyre detail object when the user clicks the plus button
+    const newTyreDetail: TyreDetail = {
+      TyreNo: "",
+      TyreType: "",
+      Makers: "",
+      FrontRear: "",
+      FittedOn: "",
+      BillNo: "",
+      BillDate: "",
+      StartKm: 0,
+      EndKm: 0,
+    };
+
+    setTyreDetails([...tyreDetails, newTyreDetail]);
   };
+
+  const capitalizeWords = (str: string) => {
+    if (!str) return str;
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+
+  // Check if any field is related to tyre details (based on the placeholder or name)
+  const hasTyreDetailsField = fields.some(
+    (field) =>
+      (field.placeholder && field.placeholder.toLowerCase().includes("tyre")) ||
+      (field.name && field.name.toLowerCase().includes("tyre")),
+  );
 
   return (
-    <div className="fixed mt-10 inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50 text-black">
+    <div className="fixed inset-0 z-50 mt-10 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50 text-black">
       <div className="relative mx-4 w-full max-w-lg rounded-lg bg-white p-6 shadow-lg">
-        <div className="text-right font-extrabold " onClick={onClose}>
+        <div className="text-right font-extrabold" onClick={onClose}>
           X
         </div>
         <h2 className="mb-4 text-center text-2xl font-bold text-gray-700">
@@ -81,56 +151,83 @@ export default function FormModal({
         >
           {fields.map((field) => (
             <div key={field.id} className="mb-4">
-              <div className="mb-1 text-left font-medium">
+              {field.type === "file" ? (
+                <div className="mb-1 text-left font-medium">
+                  {capitalizeWords(field.name)}
+                </div>
+              ) : (
                 <div className="mb-1 text-left font-medium">
                   {capitalizeWords(field.placeholder)}
                 </div>
-              </div>
-              {field.type === "checkbox" ? (
-                // Checkbox input for boolean values
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id={field.id}
-                    name={field.name}
-                    checked={formData[field.id] || false} // Handle the boolean value
-                    onChange={handleInputChange}
-                    className="h-5 w-5 rounded-md border-gray-300 text-blue-500 focus:ring-blue-500"
-                  />
-                  <label
-                    htmlFor={field.id}
-                    className="ml-2 text-sm text-gray-600"
+              )}
+              {field.type === "file" ? (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => handleUploadClick(field.id)} // Ensure it's a button and not a form submission
+                    className="rounded-md bg-blue-500 px-4 py-2 text-white"
                   >
-                    {field.placeholder}
-                  </label>
-                </div>
-              ) : field.type === "file" ? (
-                // File input for file uploads
-                <div className="mb-4">
-                  <input
-                    type="file"
-                    id={field.id}
-                    name={field.name}
-                    onChange={handleInputChange}
-                    multiple // Allow multiple file selection
-                    className="w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
-                  />
+                    Upload
+                  </button>
+                  {/* Display the image preview if available */}
+                  {imagePreview && (
+                    <div className="mt-2">
+                      <img
+                        src={imagePreview}
+                        alt="Image Preview"
+                        className="h-auto w-full rounded-md"
+                      />
+                    </div>
+                  )}
                 </div>
               ) : (
-                // Other types of input fields (text, number, etc.)
                 <input
                   type={field.type}
                   id={field.id}
                   name={field.name}
                   placeholder={field.placeholder}
-                  value={formData[field.id] || ""} // Set input value from state
-                  onChange={handleInputChange} // Track changes to the input
+                  value={formData[field.id] || ""}
+                  onChange={(e) => handleInputChange(e, field.id)}
                   className="w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
-                  required
                 />
               )}
             </div>
           ))}
+
+          {/* Only render Tyre Details if fields contain tyre-related fields */}
+          {hasTyreDetailsField && (
+            <div className="mb-4">
+              <h3 className="mb-2 text-lg font-semibold text-gray-700">
+                Tyre Details
+              </h3>
+              {tyreDetails.map((tyre, index) => (
+                <div key={index} className="space-y-2">
+                  {Object.keys(tyre).map((key) => (
+                    <div key={key} className="flex items-center">
+                      <label htmlFor={key} className="w-1/3">
+                        {capitalizeWords(key)}
+                      </label>
+                      <input
+                        type="text"
+                        id={key}
+                        name={key}
+                        value={tyre[key as keyof TyreDetail]}
+                        onChange={(e) => handleInputChange(e, key, index)}
+                        className="w-2/3 rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={addTyreDetail}
+                className="mt-2 text-blue-500 hover:text-blue-700"
+              >
+                <FaPlus /> {/* Plus Icon to add new tyre details */}
+              </button>
+            </div>
+          )}
 
           <button
             type="submit"

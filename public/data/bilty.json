@@ -1,261 +1,62 @@
 [
   {
     "id": "1",
-    "biltyNo": "1",
-    "biltyDate": "2025-03-01",
-    "companyDetails": {
-      "name": "Sanatan Express India Pvt. Ltd.",
-      "pan": "ABKCS2779J",
-      "gstin": "23ABKCS2779J1ZV",
-      "address": "Shop No 10, 1st Floor, Plot No 888, Loha Mandi, Dewas Naka, Indore 452010",
-      "contact": {
-        "mobile": "9782760844",
-        "email": "proprietor@sanatanexpress.in"
-      }
-    },
-    "ewayBillDetails": {
-      "ewayBillNo": "234567890123",
-      "expiryDate": "2025-03-01"
-    },
-    "insuranceDetails": {
-      "isInsured": true,
-      "insuranceCompany": "XYZ Insurance",
-      "policyNo": "POL98765432",
-      "insuranceDate": "2025-01-20",
-      "amount": "7000"
-    },
-    "shipmentDetails": {
-      "serialNo": "SN987654",
-      "date": "2025-01-28",
-      "expDelDate": "2025-02-10",
-      "vehicleNo": "MP09XYZ4567"
-    },
-    "consignorDetails": {
-      "name": "Michael Brown",
-      "address": "4321, DEF Street, Indore 452020",
-      "gstin": "GSTIN987654321"
-    },
-    "consigneeDetails": {
-      "name": "Alice Williams",
-      "address": "1234, LMN Street, Bhopal 462010",
-      "gstin": "GSTIN123456789"
-    },
-    "transportDetails": {
-      "from": "Indore",
-      "to": "Bhopal",
-      "dateFrom": "2025-01-28",
-      "dateTo": "2025-01-30"
-    },
-    "items": [
-      {
-        "package": "Package A",
-        "description": "Furniture",
-        "weight": {
-          "actual": "15 kg",
-          "charged": "18 kg"
-        },
-        "amount": {
-          "freight": "1200",
-          "localColl": "150",
-          "labour": "80",
-          "haltingCharge": "30"
-        },
-        "gstDetails": {
-          "totalFreight": "1200",
-          "cgst": "72",
-          "sgst": "72",
-          "igst": "0",
-          "grandTotal": "1344"
-        },
-        "gstPayableBy": ["Consignee"]
-      }
-    ],
-    "weight": "1 Ton",
-    "invoiceDetails": {
-      "invoiceNo": "INV20250128001",
-      "value": "1344"
-    },
-    "footerNotes": {
-      "jurisdiction": "Indore",
-      "loadingSupervisorSignature": "Signature"
-    }
+    "biltyNo": "BLT-001",
+    "consignorName": "ABC Transport",
+    "consigneeName": "XYZ Logistics",
+    "fromStation": "New York",
+    "toStation": "Los Angeles",
+    "vehicleNo": "NY-1234",
+    "weight": "500 kg",
+    "freight": "$200",
+    "gstin": "23ABKCS2779J1ZV"
   },
   {
     "id": "2",
-    "biltyNo": "2",
-    "biltyDate": "2025-03-01",
-    "weight": "5 Ton",
-
-    "companyDetails": {
-      "name": "Khatu Shyam Logistics",
-      "pan": "ABKCS2779J",
-      "gstin": "23ABKCS2779J1ZV",
-      "address": "Shop No 12, 2nd Floor, Plot No 999, Loha Mandi, Dewas Naka, Indore 452010",
-      "contact": {
-        "mobile": "9876543210",
-        "email": "contact@khatushyamlogistics.in"
-      }
-    },
-    "ewayBillDetails": {
-      "ewayBillNo": "345678901234",
-      "expiryDate": "2025-03-05"
-    },
-    "insuranceDetails": {
-      "isInsured": true,
-      "insuranceCompany": "DEF Insurance",
-      "policyNo": "POL11223344",
-      "insuranceDate": "2025-01-18",
-      "amount": "6000"
-    },
-    "shipmentDetails": {
-      "serialNo": "SN112233",
-      "date": "2025-01-29",
-      "expDelDate": "2025-02-10",
-      "vehicleNo": "MP09XYZ1234"
-    },
-    "consignorDetails": {
-      "name": "Sara Lee",
-      "address": "5678, GHI Street, Indore 452010",
-      "gstin": "GSTIN222233344"
-    },
-    "consigneeDetails": {
-      "name": "Bob Johnson",
-      "address": "6789, PQR Street, Bhopal 462001",
-      "gstin": "GSTIN555566777"
-    },
-    "transportDetails": {
-      "from": "Indore",
-      "to": "hydrabad",
-      "dateFrom": "2025-01-29",
-      "dateTo": "2025-01-31"
-    },
-    "items": [
-      {
-        "package": "Package B",
-        "description": "Clothing",
-        "weight": {
-          "actual": "8 kg",
-          "charged": "10 kg"
-        },
-        "amount": {
-          "freight": "800",
-          "localColl": "120",
-          "labour": "60",
-          "haltingCharge": "25"
-        },
-        "gstDetails": {
-          "totalFreight": "800",
-          "cgst": "48",
-          "sgst": "48",
-          "igst": "0",
-          "grandTotal": "916"
-        },
-        "gstPayableBy": ["Consignor", "Transporter"]
-      }
-    ],
-    "invoiceDetails": {
-      "invoiceNo": "INV20250129001",
-      "value": "916"
-    },
-    "footerNotes": {
-      "jurisdiction": "Indore",
-      "loadingSupervisorSignature": "Signature"
-    }
+    "biltyNo": "BLT-002",
+    "consignorName": "Quick Cargo",
+    "consigneeName": "Fast Movers",
+    "fromStation": "Chicago",
+    "toStation": "Houston",
+    "vehicleNo": "IL-5678",
+    "weight": "750 kg",
+    "freight": "$350",
+    "gstin": "23ABKCS2779J1ZV"
   },
   {
     "id": "3",
-    "biltyNo": "3",
-    "biltyDate": "2025-03-01",
-
-    "companyDetails": {
-      "name": "Delhi Punjab Freight",
-      "pan": "ABKCS2779J",
-      "gstin": "23ABKCS2779J1ZV",
-      "address": "Shop No 15, 1st Floor, Plot No 555, Loha Mandi, Dewas Naka, Indore 452010",
-      "contact": {
-        "mobile": "9823456789",
-        "email": "info@DPFC.in"
-      }
-    },
-    "ewayBillDetails": {
-      "ewayBillNo": "456789012345",
-      "expiryDate": "2025-03-10"
-    },
-    "insuranceDetails": {
-      "isInsured": false,
-      "insuranceCompany": "",
-      "policyNo": "",
-      "insuranceDate": "",
-      "amount": "0"
-    },
-    "shipmentDetails": {
-      "serialNo": "SN223344",
-      "date": "2025-01-30",
-      "expDelDate": "2025-02-10",
-      "vehicleNo": "MP09ABC9876"
-    },
-    "consignorDetails": {
-      "name": "Emily Green",
-      "address": "7890, STU Street, Indore 452030",
-      "gstin": "GSTIN444455555"
-    },
-    "consigneeDetails": {
-      "name": "David Carter",
-      "address": "4567, JKL Street, Bhopal 462002",
-      "gstin": "GSTIN888899999"
-    },
-    "transportDetails": {
-      "from": "Indore",
-      "to": "Bhopal",
-      "dateFrom": "2025-01-30",
-      "dateTo": "2025-02-01"
-    },
-    "items": [
-      {
-        "package": "Package C",
-        "description": "Machinery",
-        "weight": {
-          "actual": "20 kg",
-          "charged": "22 kg"
-        },
-        "amount": {
-          "freight": "2000",
-          "localColl": "200",
-          "labour": "100",
-          "haltingCharge": "50"
-        },
-        "gstDetails": {
-          "totalFreight": "2000",
-          "cgst": "120",
-          "sgst": "120",
-          "igst": "0",
-          "grandTotal": "2240"
-        },
-        "gstPayableBy": ["Consignee"]
-      },
-      {
-        "package": "Package C",
-        "description": "Machinery",
-        "weight": {
-          "actual": "20 kg",
-          "charged": "22 kg"
-        },
-        "amount": {
-          "freight": "2000",
-          "localColl": "200",
-          "labour": "100",
-          "haltingCharge": "50"
-        },
-        "gstDetails": {
-          "totalFreight": "2000",
-          "cgst": "120",
-          "sgst": "120",
-          "igst": "0",
-          "grandTotal": "2240"
-        },
-        "gstPayableBy": ["Consignee"]
-      }
-    ],
-    "weight": "10 Ton"
+    "biltyNo": "BLT-003",
+    "consignorName": "Global Shipping",
+    "consigneeName": "Sanatan Express",
+    "fromStation": "Miami",
+    "toStation": "Atlanta",
+    "vehicleNo": "FL-9101",
+    "weight": "1000 kg",
+    "freight": "$500",
+    "gstin": "23ABKCS2779J1ZV"
+  },
+  {
+    "id": "4",
+    "biltyNo": "BLT-004",
+    "consignorName": "Indore Cargo",
+    "consigneeName": "Dewas Logistics",
+    "fromStation": "Seattle",
+    "toStation": "San Francisco",
+    "vehicleNo": "WA-1121",
+    "weight": "300 kg",
+    "freight": "$150",
+    "gstin": "23ABKCS2779J1ZV"
+  },
+  {
+    "id": "5",
+    "biltyNo": "BLT-005",
+    "consignorName": "Express Movers",
+    "consigneeName": "Quick Delivery",
+    "fromStation": "Boston",
+    "toStation": "Dallas",
+    "vehicleNo": "MA-3141",
+    "weight": "600 kg",
+    "freight": "$250",
+    "gstin": "23ABKCS2779J1ZV"
   }
 ]

@@ -114,8 +114,8 @@ const menuGroups = [
         children: [
           {
             id: 7,
-            label: "Chalan Form",
-            route: "/chalanForm",
+            label: "Challan Form",
+            route: "/challanForm",
           },
         ],
       },

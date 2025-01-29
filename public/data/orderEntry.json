@@ -1,24 +1,57 @@
 [
   {
     "id": "1",
-    "partyName": "John Doe Enterprises",
-    "fromStation": "Station A",
-    "toStation": "Station B",
-    "fromDate": "2025-02-01T10:00:00Z",
-    "toDate": "2025-02-02T18:00:00Z",
-    "vehicleRequired": "Yes",
-    "vehicleType": "single Excel",
-    "orderClose": true
+    "partyName": "ABC Transport",
+    "fromStation": "New York",
+    "toStation": "Los Angeles",
+    "fromDate": "2023-10-01",
+    "toDate": "2023-10-05",
+    "vehicleRequired": "2",
+    "vehicleType": "Truck",
+    "orderClose": false
   },
   {
     "id": "2",
-    "partyName": "John Doe Enterprises",
-    "fromStation": "Station A",
-    "toStation": "Station B",
-    "fromDate": "2025-02-01T10:00:00Z",
-    "toDate": "2025-02-02T18:00:00Z",
-    "vehicleRequired": "Yes",
-    "vehicleType": "Multi Excel",
+    "partyName": "XYZ Logistics",
+    "fromStation": "Chicago",
+    "toStation": "Houston",
+    "fromDate": "2023-10-10",
+    "toDate": "2023-10-12",
+    "vehicleRequired": "1",
+    "vehicleType": "Van",
+    "orderClose": true
+  },
+  {
+    "id": "3",
+    "partyName": "Quick Cargo",
+    "fromStation": "Miami",
+    "toStation": "Atlanta",
+    "fromDate": "2023-10-15",
+    "toDate": "2023-10-17",
+    "vehicleRequired": "3",
+    "vehicleType": "Trailer",
+    "orderClose": false
+  },
+  {
+    "id": "4",
+    "partyName": "Fast Movers",
+    "fromStation": "Seattle",
+    "toStation": "San Francisco",
+    "fromDate": "2023-10-20",
+    "toDate": "2023-10-22",
+    "vehicleRequired": "2",
+    "vehicleType": "Truck",
+    "orderClose": true
+  },
+  {
+    "id": "5",
+    "partyName": "Global Shipping",
+    "fromStation": "Boston",
+    "toStation": "Dallas",
+    "fromDate": "2023-10-25",
+    "toDate": "2023-10-28",
+    "vehicleRequired": "4",
+    "vehicleType": "Van",
     "orderClose": false
   }
 ]

@@ -10,7 +10,9 @@
     "branch Manager Name": "Alice Johnson",
     "branchManager Contact": " 987-654-3210",
     "branchManagerEmail": "alice.johnson@example.com",
-    "document": null
+    "Documents": {
+      "Documents": "Hired_RC_DOC.pdf"
+    }
   },
   {
     "id": "B002",
@@ -23,6 +25,8 @@
     "branch Manager Name": "Alice Johnson",
     "branchManager Contact": " 9876543210",
     "branchManagerEmail": "alice.johnson@example.com",
-    "document": null
+    "Documents": {
+      "Documents": "Hired_RC_DOC.pdf"
+    }
   }
 ]

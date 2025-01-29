@@ -25,14 +25,9 @@ const BranchManagement = () => {
       managerContact: "",
       managerPhone: "",
     },
-    documents: [
-      {
-        type: "",
-        name: "  ",
-        expiryDate: new Date().toISOString().split("T")[0],
-        documentUrl: "",
-      },
-    ],
+    Documents: {
+      Documents: "",
+    },
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -70,13 +65,17 @@ const BranchManagement = () => {
 
       if (key === "id") return; // Skip branchId for form fields
 
-      if (key === "documents") {
-        value.forEach((doc: any, index: any) => {
+      if (key === "Documents") {
+        // Handle documents as files
+        Object.keys(value).forEach((doc: any, index: number) => {
+          const docKey = `Document${doc}${index + 1}`;
           fields.push({
-            id: `${fieldName}.${index}.file`,
-            name: `Upload Document ${index + 1}`,
+            id: `${fieldName}.${docKey}`,
+            name: `Upload ${doc}`,
             type: "file",
-            value: doc.file,
+            value: value[docKey],
+            key: `${fieldName}.${docKey}`,
+            accept: "application/pdf,image/*",
           });
         });
       }
@@ -312,7 +311,7 @@ const BranchManagement = () => {
       {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Vehicle"}
+          title={"Add New Branch"}
           onClose={handleCloseModal}
           fields={transformToFields(defaultData)}
           onSubmit={handleSubmit}

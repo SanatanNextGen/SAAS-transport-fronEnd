@@ -24,6 +24,9 @@ const BrokerManagement = () => {
       ifscCode: "",
       bankName: "",
     },
+    Documents: {
+      Documents: "",
+    },
     createdAt: "",
     updatedAt: "",
   };
@@ -45,7 +48,6 @@ const BrokerManagement = () => {
   }, []);
 
   const handleSubmit = (updatedData: any) => {
-    console.log("Updated  Data:", updatedData);
 
     // Update the Data state with the edited data
     const updatedDatas = Data.map((data) =>
@@ -69,13 +71,17 @@ const BrokerManagement = () => {
       if (key === "id") return;
       // If the value is an object (and not null), call the function recursively
 
-      if (key === "documents") {
-        value.forEach((doc: any, index: any) => {
+      if (key === "Documents") {
+        // Handle documents as files
+        Object.keys(value).forEach((doc: any, index: number) => {
+          const docKey = `Document${doc}${index + 1}`;
           fields.push({
-            id: `${fieldName}.${index}.file`,
-            name: `Upload Document ${index + 1}`,
+            id: `${fieldName}.${docKey}`,
+            name: `Upload ${doc}`,
             type: "file",
-            value: doc.file,
+            value: value[docKey],
+            key: `${fieldName}.${docKey}`,
+            accept: "application/pdf,image/*",
           });
         });
       }

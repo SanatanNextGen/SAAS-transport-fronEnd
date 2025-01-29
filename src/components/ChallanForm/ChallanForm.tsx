@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-const FormPage: React.FC = () => {
+const ChallanForm: React.FC = () => {
   const [Data, setData] = useState<any[]>([]);
   const [selectedData, setSelectedData] = useState<any[]>([]); // Array to store selected bilties
   const [rows, setRows] = useState([{}]);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Handle adding a new row
   const addRow = () => {
@@ -14,13 +15,19 @@ const FormPage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/data/bilty.json");
+      const response = await fetch("/data/challan.json");
       const data = await response.json();
       setData(data);
     };
 
     fetchData();
   }, []);
+
+  const selectBuilty = () => {
+    if (!isOpen) {
+      setIsOpen(true);
+    } else setIsOpen(false);
+  };
 
   // Handle checkbox change
   const handleCheckboxChange = (id: string) => {
@@ -34,30 +41,49 @@ const FormPage: React.FC = () => {
     });
   };
 
+  // Handle input changes for selected data
+  const handleInputChange = (index: number, field: string, value: string) => {
+    const updatedData = [...selectedData];
+    updatedData[index][field] = value;
+    setSelectedData(updatedData);
+  };
+
   return (
     <>
-      <div className="P mb-6 flex flex-col items-center text-center ">
-        <label className="text-lg font-semibold text-white">
-          Select the Bilty for creating Chalan
-        </label>
-        <div className="mt-2">
-          {Data.map((bilty) => (
-            <div key={bilty.id} className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id={`bilty-${bilty.id}`}
-                checked={selectedData.some(
-                  (selected) => selected.id === bilty.id,
-                )}
-                onChange={() => handleCheckboxChange(bilty.id)}
-                className="h-4 w-4 rounded"
-              />
-              <label htmlFor={`bilty-${bilty.id}`} className="text-white">
-                {bilty.biltyNo}
-              </label>
-            </div>
-          ))}
-        </div>
+      <div className="mb-6 flex flex-col items-center text-center">
+        <button
+          onClick={selectBuilty}
+          className="hover:bg-primary-dark rounded-lg bg-primary px-6 py-3 text-lg font-semibold text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+          Select the Biltys for creating Challan
+        </button>
+
+        {isOpen && (
+          <div className="dark:bg-dark-bg mt-4 h-[35vw] w-full max-w-xs overflow-y-auto rounded-lg bg-white p-4 shadow-lg xl:h-[10vw]">
+            {Data.map((bilty) => (
+              <div
+                key={bilty.id}
+                className=" mb-3 flex items-center space-x-3 "
+              >
+                <input
+                  type="checkbox"
+                  id={`bilty-${bilty.id}`}
+                  checked={selectedData.some(
+                    (selected) => selected.id === bilty.id,
+                  )}
+                  onChange={() => handleCheckboxChange(bilty.id)}
+                  className="h-5 w-5 rounded-md text-primary focus:ring-2 focus:ring-primary dark:text-secondary dark:focus:ring-secondary"
+                />
+                <label
+                  htmlFor={`bilty-${bilty.id}`}
+                  className="font-medium text-black "
+                >
+                  {bilty.biltyNo}
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {selectedData.length > 0 ? (
@@ -113,6 +139,13 @@ const FormPage: React.FC = () => {
                         <input
                           type="text"
                           value={bilty ? bilty.companyDetails.name : ""}
+                          onChange={(e) =>
+                            handleInputChange(
+                              index,
+                              "companyDetails.name",
+                              e.target.value,
+                            )
+                          }
                           className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                           placeholder="Enter Branch"
                         />
@@ -153,6 +186,13 @@ const FormPage: React.FC = () => {
                         <input
                           type="text"
                           value={bilty ? bilty.shipmentDetails.vehicleNo : ""}
+                          onChange={(e) =>
+                            handleInputChange(
+                              index,
+                              "shipmentDetails.vehicleNo",
+                              e.target.value,
+                            )
+                          }
                           className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                           placeholder="Enter Vehicle No"
                         />
@@ -170,6 +210,13 @@ const FormPage: React.FC = () => {
                     <input
                       type="text"
                       value={bilty ? bilty.transportDetails.from : ""}
+                      onChange={(e) =>
+                        handleInputChange(
+                          index,
+                          "transportDetails.from",
+                          e.target.value,
+                        )
+                      }
                       className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter Loading Station"
                     />
@@ -182,82 +229,44 @@ const FormPage: React.FC = () => {
                     <input
                       type="text"
                       value={bilty ? bilty.transportDetails.to : ""}
+                      onChange={(e) =>
+                        handleInputChange(
+                          index,
+                          "transportDetails.to",
+                          e.target.value,
+                        )
+                      }
                       className="w-full rounded-lg border border-gray-300 p-3 text-sm transition-colors focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter Delivery Station"
                     />
                   </div>
                 </div>
               ))}
-              <div className="mb-4 border-b border-gray-300 pb-2">
-                <table className="w-full border-collapse text-center">
-                  <thead>
+              <div className="mb-6 overflow-x-auto border-b border-gray-300 pb-6">
+                <table className="w-full border-collapse text-sm text-gray-800">
+                  <thead className="bg-blue-100">
                     <tr>
-                      <th className="border border-gray-300 p-3">Bilty No</th>
-                      <th className="border border-gray-300 p-3">Bilty Date</th>
-                      <th className="border border-gray-300 p-3">
-                        Nature Of Goods
-                      </th>
-                      <th className="border border-gray-300 p-3">
-                        No Of Packages
-                      </th>
-                      <th className="border border-gray-300 p-3">
-                        Desp. Weight
-                      </th>
-                      <th className="border border-gray-300 p-3">
-                        Exp. Del. Date
-                      </th>
+                      <th className="p-4">Bilty No</th>
+                      <th className="p-4">Bilty Date</th>
+                      <th className="p-4">Nature Of Goods</th>
+                      <th className="p-4">No Of Packages</th>
+                      <th className="p-4">Desp. Weight</th>
+                      <th className="p-4">Exp. Del. Date</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white">
-                    {selectedData.map((bilty, index) => (
-                      <tr key={bilty.id}>
-                        <td className="border border-gray-300 p-3">
-                          <input
-                            type="text"
-                            value={bilty.biltyNo}
-                            className="w-full rounded-md border border-gray-300 p-2 text-center text-sm"
-                            readOnly
-                          />
-                        </td>
-                        <td className="border border-gray-300 p-3">
-                          <input
-                            type="text"
-                            value={bilty.biltyDate}
-                            className="w-full rounded-md border border-gray-300 p-2 text-center text-sm"
-                            readOnly
-                          />
-                        </td>
-                        <td className="border border-gray-300 p-3">
-                          <input
-                            type="text"
-                            value={bilty.natureOfGoods}
-                            className="w-full rounded-md border border-gray-300 p-2 text-center text-sm"
-                            readOnly
-                          />
-                        </td>
-                        <td className="border border-gray-300 p-3">
-                          <input
-                            type="text"
-                            value={bilty.items.length}
-                            className="w-full rounded-md border border-gray-300 p-2 text-center text-sm"
-                            readOnly
-                          />
-                        </td>
-                        <td className="border border-gray-300 p-3">
-                          <input
-                            type="text"
-                            value={bilty.weight}
-                            className="w-full rounded-md border border-gray-300 p-2 text-center text-sm"
-                            readOnly
-                          />
-                        </td>
-                        <td className="border border-gray-300 p-3">
-                          <input
-                            type="text"
-                            value={bilty.shipmentDetails.expDelDate}
-                            className="w-full rounded-md border border-gray-300 p-2 text-center text-sm"
-                            readOnly
-                          />
+                  <tbody>
+                    {selectedData.map((bilty) => (
+                      <tr
+                        key={bilty.id}
+                        className="transition duration-200 hover:bg-gray-50"
+                      >
+                        <td className="p-4">{bilty.biltyNo}</td>
+                        <td className="p-4">{bilty.biltyDate}</td>
+                        <td className="p-4">{bilty.natureOfGoods}</td>
+                        <td className="p-4">{bilty.items.length}</td>
+                        <td className="p-4">{bilty.weight}</td>
+                        <td className="p-4">
+                          {bilty.shipmentDetails.expDelDate}
                         </td>
                       </tr>
                     ))}
@@ -298,6 +307,11 @@ const FormPage: React.FC = () => {
                   Signature of the Loading Supervisor:
                 </p>
               </div>
+              <div className="mt-8 items-center text-center">
+                <button className="rounded-md bg-blue-600 px-6 py-3 text-lg text-white shadow-md hover:bg-blue-700 focus:outline-none">
+                  Submit Challan
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -310,4 +324,4 @@ const FormPage: React.FC = () => {
   );
 };
 
-export default FormPage;
+export default ChallanForm;

@@ -1,63 +1,132 @@
 [
   {
-    "id": "V001",
-    "vehicleBrand": "Bharat Benz",
-    "type": "Multi Excel",
-    "ownerName": "Sanatan",
-    "ownerContact": "7880001415",
-    "ownerEmail": "demo@gmail.com",
-    "registrationNumber": "ABC123",
-    "registrationIssuedBy": "DMV Springfield",
-    "registrationIssueDate": "2023-01-01",
-    "registrationExpiryDate": "2024-01-01",
-    "insuranceProvider": "StateFarm",
-    "insurancePolicyNumber": "INS-123456",
-    "insuranceExpiryDate": "2024-01-01",
-    "fuelType": "Desiel",
-    "fuelTankCapacity": 50,
-    "mileage": 6,
-    "mileageLastChecked": "2023-12-10",
-    "documents": []
+    "vehicleType": "Owned",
+    "Alias": "Truck1",
+    "TruckNo": "ABC1234",
+    "Make": "Volvo",
+    "EngineNo": "EN123456789",
+    "ChassisNo": "CH123456789",
+    "Model": "FMX",
+    "YearOfManufacture": "2020",
+    "RTO": {
+      "RTO_No": "RTO123",
+      "RTO_Date": "2020-08-15"
+    },
+    "Fitness": {
+      "FitnessNo": "FIT123",
+      "FitnessDate": "2020-09-01"
+    },
+    "PUC": {
+      "PUC_No": "PUC123",
+      "PUC_Date": "2024-01-01"
+    },
+    "TruckOwner": {
+      "Name": "John Doe",
+      "MobileNo": "+1234567890",
+      "PANNo": "ABCDE1234F"
+    },
+    "OtherDetails": {
+      "PermitNo": "PMT123",
+      "PermitDate": "2020-09-10",
+      "InsuranceNo": "INS123456",
+      "InsuranceFrom": "2020-10-01",
+      "InsuranceCompany": "XYZ Insurance",
+      "InsuranceValidity": "2024-09-30",
+      "InsuranceCharge": 12000,
+      "ShowRoadTaxDetails": "Yes",
+      "VehicleType": "Heavy",
+      "Address": "123 Main Street, City",
+      "Remark": "Good condition",
+      "DriverName": "Mike Smith",
+      "RegdNo": "REG123456",
+      "AdharCardNo": "1234-5678-9012",
+      "DLNo": "DL123456789",
+      "InsuranceCopy": "INS_COPY.pdf"
+    },
+    "Documents": {
+      "RCDocument": "RC_DOC.pdf",
+      "drivingLicense": "DL_COPY.pdf",
+      "PUCDocument": "PUC_DOC.pdf",
+      "PANDocument": "PAN_DOC.pdf",
+      "TDSDocument": "TDS_DOC.pdf",
+      "TruckPicture": "truck_picture.jpg",
+      "PermitDocument": "PERMIT_DOC.pdf",
+      "InsuranceCopy": "INSURANCE_COPY.pdf"
+    },
+    "RoadTaxDetails": {
+      "StartDate": "2020-08-01",
+      "EndDate": "2021-07-31",
+      "NextDue": "2021-08-01",
+      "RoadTaxAmount": 5000,
+      "TransferTo": "XYZ Road Tax Authority",
+      "TransferDate": "2020-08-05",
+      "BankName": "XYZ Bank",
+      "Remarks": "Paid on time"
+    },
+    "TyreDetails": [
+      {
+        "TyreNo": "TYRE001",
+        "TyreType": "New",
+        "Makers": "Michelin",
+        "FrontRear": "Front",
+        "FittedOn": "2020-09-15",
+        "BillNo": "BILL123",
+        "BillDate": "2020-09-15",
+        "StartKm": 0,
+        "EndKm": 5000
+      }
+     
+    ]
   },
-
   {
-    "id": "V002",
-    "vehicleBrand": "Bharat Benz",
-    "type": "Multi Excel",
-    "ownerName": "Sanatan",
-    "ownerContact": "7880001415",
-    "ownerEmail": "demo@gmail.com",
-    "registrationNumber": "ABC123",
-    "registrationIssuedBy": "DMV Springfield",
-    "registrationIssueDate": "2023-01-01",
-    "registrationExpiryDate": "2024-01-01",
-    "insuranceProvider": "StateFarm",
-    "insurancePolicyNumber": "INS-123456",
-    "insuranceExpiryDate": "2024-01-01",
-    "fuelType": "Desiel",
-    "fuelTankCapacity": 50,
-    "mileage": 6,
-    "mileageLastChecked": "2023-12-10",
-    "documents": []
-  },
-  {
-    "id": "V003",
-    "vehicleBrand": "Bharat Benz",
-    "type": "Multi Excel",
-    "ownerName": "Sanatan",
-    "ownerContact": "7880001415",
-    "ownerEmail": "demo@gmail.com",
-    "registrationNumber": "ABC123",
-    "registrationIssuedBy": "DMV Springfield",
-    "registrationIssueDate": "2023-01-01",
-    "registrationExpiryDate": "2024-01-01",
-    "insuranceProvider": "StateFarm",
-    "insurancePolicyNumber": "INS-123456",
-    "insuranceExpiryDate": "2024-01-01",
-    "fuelType": "Desiel",
-    "fuelTankCapacity": 50,
-    "mileage": 6,
-    "mileageLastChecked": "2023-12-10",
-    "documents": []
+    "vehicleType": "Hired",
+    "Alias": "Truck2",
+    "TruckNo": "XYZ9876",
+    "Make": "Tata",
+    "EngineNo": "EN987654321",
+    "ChassisNo": "CH987654321",
+    "Model": "LPT",
+    "YearOfManufacture": "2018",
+    "RTO": {
+      "RTO_No": "RTO456",
+      "RTO_Date": "2018-05-20"
+    },
+    "VehicleType": "Medium",
+    "Address": "456 Another Street, City",
+    "Remark": "Needs repair",
+    "DriverDetails": {
+      "Name": "Sarah Lee",
+      "RegdNo": "DL1234567",
+      "AdharCardNo": "9876-5432-1098",
+      "DLNo": "DL987654321",
+      "InsuranceCopy": "Hired_Insurance_Copy.pdf"
+    },
+    "PUCDetails": {
+      "PUCNo": "PUC456",
+      "ValidUpto": "2025-01-01"
+    },
+    "InsuranceDetails": {
+      "InsuranceNo": "INS987654",
+      "ValidUpto": "2024-12-31"
+    },
+    "PermitDetails": {
+      "PermitNo": "PMT456",
+      "ValidUpto": "2023-11-01"
+    },
+    "TruckOwner": {
+      "Name": "David Miller",
+      "MobileNo": "+9876543210",
+      "PANNo": "XYZAB1234C"
+    },
+    "Documents": {
+      "RCDocument": "Hired_RC_DOC.pdf",
+      "drivingLicense": "Hired_DL_COPY.pdf",
+      "PUCDocument": "Hired_PUC_DOC.pdf",
+      "PANDocument": "Hired_PAN_DOC.pdf",
+      "TDSDeclarationDocument": "Hired_TDS_DOC.pdf",
+      "TruckPicture": "hired_truck_picture.jpg",
+      "PermitDocument": "Hired_PERMIT_DOC.pdf",
+      "InsuranceCopy": "Hired_INSURANCE_COPY.pdf"
+    }
   }
 ]

@@ -2,92 +2,256 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import FormModal from "../FormModal/FormModal";
+import Modal from "../Modal/Modal";
 
 const VehicleManagement = () => {
-  const defaultData = {
-    id: "",
-    vehicleBrand: "",
-    type: "",
-    ownerName: "",
-    ownerContact: "",
-    registration: {
-      number: "",
-      issuedBy: " ",
-      issueDate: new Date().toISOString().split("T")[0],
-      expiryDate: new Date().toISOString().split("T")[0],
-      insuranceDetails: {
-        provider: "",
-        policyNumber: "",
-        expiryDate: new Date().toISOString().split("T")[0],
-      },
+  const ownData = {
+    Alias: "",
+    TruckNo: "",
+    Make: "",
+    EngineNo: "",
+    ChassisNo: "",
+    Model: "",
+    YearOfManufacture: "",
+    RTO: {
+      RTO_No: "",
+      RTO_Date: "",
     },
-    status: {
-      availability: false,
-      condition: "",
-      lastChecked: "",
+    Fitness: {
+      FitnessNo: "",
+      FitnessDate: "",
     },
-    fuel: {
-      type: "",
-      tankCapacity: 0,
-      currentLevel: 0,
+    PUC: {
+      PUC_No: "",
+      PUC_Date: "",
     },
-    odometer: {
-      mileage: 0,
-      lastChecked: "",
+    TruckOwner: {
+      Name: "",
+      MobileNo: "",
+      PANNo: "",
     },
-    documents: [
+    OtherDetails: {
+      PermitNo: "",
+      PermitDate: "",
+      InsuranceNo: "",
+      InsuranceFrom: "",
+      InsuranceCompany: "",
+      InsuranceValidity: "",
+      InsuranceCharge: 0,
+      ShowRoadTaxDetails: "Yes",
+
+      VehicleType: "",
+      Address: "",
+      Remark: "",
+      DriverName: "",
+      RegdNo: "",
+      AdharCardNo: "",
+
+      DLNo: "",
+      InsuranceCopy: "",
+    },
+    Documents: {
+      RCDocument: "",
+      drivingLicense: "",
+      PUCDocument: "",
+      PANDocument: "",
+      TDSDocument: "",
+      TruckPicture: "",
+      PermitDocument: "",
+      InsuranceCopy: "",
+    },
+    RoadTaxDetails: {
+      StartDate: "",
+      EndDate: "",
+      NextDue: "",
+      RoadTaxAmount: 0,
+      TransferTo: "",
+      TransferDate: "",
+      BankName: "",
+      Remarks: "",
+    },
+    TyreDetails: [
       {
-        type: "",
-        name: "  ",
-        expiryDate: new Date().toISOString().split("T")[0],
-        documentUrl: "",
+        TyreNo: "",
+        TyreType: "", // "New", "Old", or "Resole"
+        Makers: "",
+        FrontRear: "", // "Front" or "Rear"
+        FittedOn: "",
+        BillNo: "",
+        BillDate: "",
+        StartKm: 0,
+        EndKm: 0, // End Km (of Previous Tyre)
       },
     ],
+  };
+
+  const hiredData = {
+    Alias: "",
+    TruckNo: "",
+    Make: "",
+    EngineNo: "",
+    ChassisNo: "",
+    Model: "",
+    YearOfManufacture: "",
+    RTO: {
+      RTO_No: "",
+      RTO_Date: "",
+    },
+    VehicleType: "",
+    Address: "",
+    Remark: "",
+    DriverDetails: {
+      Name: "",
+      RegdNo: "",
+      AdharCardNo: "",
+      DLNo: "",
+      InsuranceCopy: "",
+    },
+    PUCDetails: {
+      PUCNo: "",
+      ValidUpto: "",
+    },
+    InsuranceDetails: {
+      InsuranceNo: "",
+      ValidUpto: "",
+    },
+    PermitDetails: {
+      PermitNo: "",
+      ValidUpto: "",
+    },
+    TruckOwner: {
+      Name: "",
+      MobileNo: "",
+      PANNo: "",
+    },
+    Documents: {
+      RCDocument: "",
+      drivingLicense: "",
+      PUCDocument: "",
+      PANDocument: "",
+      TDSDeclarationDocument: "",
+      TruckPicture: "",
+      PermitDocument: "",
+      InsuranceCopy: "",
+    },
   };
 
   const downloadCSV = () => {
     const csvRows = [];
     const headers = [
-      "Vehicle Number",
-      "Vehicle Brand",
-      "Owner Name",
-      "Owner Contact",
-      "Registration Issued By",
-      "Registration Issue Date",
-      "Registration Expiry Date",
-      "Insurance Provider",
-      "Insurance Policy Number",
-      "Insurance Expiry Date",
+      "Truck Number",
+      "Make",
+      "Model",
+      "Year of Manufacture",
+      "Permit No",
+      "Permit Date",
+      "Insurance No",
+      "Insurance From",
+      "Insurance Validity",
+      "Insurance Company",
+      "Insurance Charge",
+      "RTO No",
+      "RTO Date",
+      "Fitness No",
+      "Fitness Date",
+      "PUC No",
+      "PUC Date",
+      "Vehicle Type",
+      "Address",
+      "Remark",
+      "Driver Name",
+      "Regd No",
+      "Adhar Card No",
+      "Truck Owner Name",
+      "Truck Owner Mobile No",
+      "Truck Owner PAN No",
+      "DL No",
+      "Insurance Copy",
+      "RC Document",
+      "PUC Document",
+      "PAN Document",
+      "TDS Document",
+      "Truck Picture",
+      "Permit Document",
+      "Insurance Copy",
+      "Road Tax Start Date",
+      "Road Tax End Date",
+      "Next Due",
+      "Road Tax Amount",
+      "Transfer To",
+      "Transfer Date",
+      "Bank Name",
+      "Remarks",
     ];
     csvRows.push(headers.join(","));
 
     Data.forEach((item) => {
+      console.log("🚀 ~ Data.forEach ~ item:", item);
+
       const row = [
-        item.registration.number,
-        item.vehicleBrand,
-        item.ownerName,
-        item.ownerContact,
-        item.registration.issuedBy,
-        item.registration.issueDate,
-        item.registration.expiryDate,
-        item.registration.insuranceDetails.provider,
-        item.registration.insuranceDetails.policyNumber,
-        item.registration.insuranceDetails.expiryDate,
+        item?.TruckNo,
+        item?.Make,
+        item?.Model,
+        item?.YearOfManufacture,
+        item?.PermitNo,
+        item?.PermitDate,
+        item?.InsuranceNo,
+        item?.InsuranceFrom,
+        item?.InsuranceValidity,
+        item?.InsuranceCompany,
+        item?.InsuranceCharge,
+        item?.RTO?.RTO_No, // Corrected reference
+        item?.RTO?.RTO_Date, // Corrected reference
+        item?.Fitness?.FitnessNo, // Corrected reference
+        item?.Fitness?.FitnessDate, // Corrected reference
+        item?.PUC?.PUC_No, // Corrected reference
+        item?.PUC?.PUC_Date, // Corrected reference
+        item?.OtherDetails?.VehicleType,
+        item?.OtherDetails?.Address,
+        item?.OtherDetails?.Remark,
+        item?.OtherDetails?.DriverName,
+        item?.OtherDetails?.RegdNo,
+        item?.OtherDetails?.AdharCardNo,
+        item?.TruckOwner?.Name,
+        item?.TruckOwner?.MobileNo,
+        item?.TruckOwner?.PANNo,
+        item?.OtherDetails?.DLNo,
+        item?.OtherDetails?.InsuranceCopy,
+        item?.Documents?.RCDocument,
+        item?.Documents?.PUCDocument,
+        item?.Documents?.PANDocument,
+        item?.Documents?.TDSDocument,
+        item?.Documents?.TruckPicture,
+        item?.Documents?.PermitDocument,
+        item?.Documents?.InsuranceCopy,
+        item?.RoadTaxDetails?.StartDate,
+        item?.RoadTaxDetails?.EndDate,
+        item?.RoadTaxDetails?.NextDue,
+        item?.RoadTaxDetails?.RoadTaxAmount,
+        item?.RoadTaxDetails?.TransferTo,
+        item?.RoadTaxDetails?.TransferDate,
+        item?.RoadTaxDetails?.BankName,
+        item?.RoadTaxDetails?.Remarks,
       ];
+
       csvRows.push(row.join(","));
     });
+
+    console.log(csvRows);
 
     const csvString = csvRows.join("\n");
     const blob = new Blob([csvString], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.setAttribute("href", url);
-    a.setAttribute("download", "vehicle_records.csv");
+    a.setAttribute("download", "truck_records.csv");
     a.click();
     URL.revokeObjectURL(url);
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [VehicleType, setVehicleType] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [Data, setData] = useState<any[]>([]);
   const [selectedData, setSelectedData] = useState<any>(null);
@@ -109,39 +273,94 @@ const VehicleManagement = () => {
     setData(updatedDatas);
     setIsEditModalOpen(false);
   };
+  const getDataForVehicleType = (type: string) => {
+    if (type === "Own") {
+      return ownData;
+    } else if (type === "Hired") {
+      return hiredData;
+    }
+    return ownData;
+  };
+
+  // const transformToFields = (data: any, parentKey: string = ""): any[] => {
+  //   if (!data) return [];
+  //   const fields: any[] = [];
+
+  //   Object.keys(data).forEach((key) => {
+  //     const value = data[key];
+  //     const fieldName = parentKey ? `${parentKey}.${key}` : key;
+
+  //     if (key === "id") return; // Skip the ID field
+
+  //     if (key === "Documents" && typeof value === "object") {
+  //       // Handle documents as files
+  //       Object.keys(value).forEach((docKey) => {
+  //         fields.push({
+  //           id: `${fieldName}.${docKey}`,
+  //           name: `Upload ${docKey.replace(/([A-Z])/g, " $1")}`, // Converts camelCase to readable format (e.g. "RCDocument" -> "Upload RC Document")
+  //           type: "file", // Set type to file
+  //           value: value[docKey],
+  //           key: `${fieldName}.${docKey}`, // Unique key based on the document name
+  //           accept: "application/pdf,image/*", // You can specify document types (e.g., PDFs, images)
+  //         });
+  //       });
+  //     } else if (typeof value === "object" && value !== null) {
+  //       // Recursively transform nested objects
+  //       fields.push(...transformToFields(value, fieldName));
+  //     } else {
+  //       // For primitive types, create a field
+  //       fields.push({
+  //         id: fieldName,
+  //         name: fieldName.replace(/([A-Z])/g, " $1"), // Converts camelCase to readable format
+  //         placeholder: `Enter ${key.replace(/([A-Z])/g, " $1").toLowerCase()}`,
+  //         type: getFieldType(value, fieldName), // Get field type based on value
+  //         value: value,
+  //       });
+  //     }
+  //   });
+
+  //   return fields;
+  // };
 
   const transformToFields = (data: any, parentKey: string = ""): any[] => {
     if (!data) return [];
+
     const fields: any[] = [];
 
+    // Iterate over each key-value pair in the Data
     Object.keys(data).forEach((key) => {
       const value = data[key];
       const fieldName = parentKey ? `${parentKey}.${key}` : key;
 
-      if (key === "id") return; // Skip the ID field
+      if (key === "id") return;
+      // If the value is an object (and not null), call the function recursively
 
-      if (key === "documents") {
-        value.forEach((doc: any, index: any) => {
+      if (key === "Documents") {
+        // Handle documents as files
+        Object.keys(value).forEach((doc: any, index: number) => {
+          const docKey = `Document${doc}${index + 1}`;
           fields.push({
-            id: `${fieldName}.${index}.file`,
-            name: `Upload Document ${index + 1}`,
+            id: `${fieldName}.${docKey}`,
+            name: `Upload ${doc}`,
             type: "file",
-            value: doc.file,
+            value: value[docKey],
+            key: `${fieldName}.${docKey}`,
+            accept: "application/pdf,image/*",
           });
         });
       }
 
       if (typeof value === "object" && value !== null) {
-        // Recursively transform nested objects
+        // Recursively handle nested objects
         fields.push(...transformToFields(value, fieldName));
       } else {
-        // Create a field object for primitive values
+        // Otherwise, handle the simple property
         fields.push({
           id: fieldName,
           name: fieldName,
-          placeholder: `Enter ${key.replace(/([A-Z])/g, " $1").toLowerCase()}`,
-          type: getFieldType(value, fieldName), // Pass fieldName to getFieldType
-          value: value,
+          placeholder: `Enter ${key.replace(/([A-Z])/g, " $1").toLowerCase()}`, // Dynamically set the placeholder
+          type: getFieldType(value), // Dynamically determine the input type
+          value: value, // Format date fields to match input date format
         });
       }
     });
@@ -149,16 +368,43 @@ const VehicleManagement = () => {
     return fields;
   };
 
-  const getFieldType = (value: any, fieldName: string): string => {
-    if (typeof value === "boolean") return "checkbox";
-    if (typeof value === "number") return "number";
+  // Helper function to determine the input field type
+  const getFieldType = (value: any): string => {
+    if (typeof value === "boolean") return "checkbox"; // Boolean values will map to checkboxes
+    if (typeof value === "number") return "number"; // Number values will map to number input
 
-    return "text"; // Default to text for other strings
+    return "text"; // Default type for strings is text
   };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
+    setIsOpen(false);
   };
+
+  const handleIsOpenModal = () => {
+    setIsOpen(true);
+  };
+
+  const handleIsCloseModal = () => {
+    setIsOpen(false);
+  };
+
+  const modalOptions = [
+    {
+      label: "Own Vehicle",
+      onClick: () => {
+        setVehicleType("Own");
+        handleOpenModal();
+      },
+    },
+    {
+      label: "HiredVehicle",
+      onClick: () => {
+        setVehicleType("Hired");
+        handleOpenModal();
+      },
+    },
+  ];
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -170,25 +416,45 @@ const VehicleManagement = () => {
     setIsEditModalOpen(true);
   };
 
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: string,
+    index: number,
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const updatedData = [...Data];
+    updatedData[index].Documents[field] = file; // Update the corresponding field with the uploaded file
+    setData(updatedData);
+  };
+
   const headers = Data.length > 0 ? Object.keys(Data[0]) : [];
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       {/* Add Vehicle Button */}
-      <div className="flex justify-between">
-        <div className="mb-6 text-center">
+      <div className="mb-8 flex items-center justify-between">
+        <div>
           <Link
             href="#"
-            className="inline-flex items-center justify-center rounded-md bg-meta-3 px-6 py-3 text-center font-medium text-white hover:bg-opacity-90 sm:px-8 md:px-10"
-            onClick={handleOpenModal}
+            className="inline-flex transform items-center justify-center rounded-lg bg-meta-3 px-6 py-3 text-center font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-opacity-90 sm:px-8 md:px-10"
+            onClick={handleIsOpenModal}
           >
             Add Vehicle
           </Link>
+
+          <Modal
+            isOpen={isOpen}
+            onClose={handleIsCloseModal}
+            options={modalOptions}
+            title="Select the Vehicle Type"
+          />
         </div>
 
-        <div className="mb-6 text-center">
+        <div>
           <button
-            className="inline-flex items-center justify-center rounded-md bg-blue-500 px-6 py-3 text-center font-medium text-white hover:bg-blue-600"
+            className="inline-flex transform items-center justify-center rounded-lg bg-blue-500 px-6 py-3 text-center font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-blue-600"
             onClick={downloadCSV}
           >
             Download Records
@@ -196,14 +462,20 @@ const VehicleManagement = () => {
         </div>
       </div>
 
-      <div className="mt-4 w-[85vw] border border-stroke bg-white pb-4 pt-6 text-center shadow-default placeholder:rounded-sm dark:border-strokedark dark:bg-boxdark sm:px-7.5 lg:w-[60vw] lg:px-8 xl:w-[70vw] xl:pb-1">
-        <div className="overflow-x-auto">
+      {/* Table Container */}
+      <div className="mt-6 w-[85vw] rounded-lg border border-stroke bg-white pb-4 pt-6 text-center shadow-xl dark:border-strokedark dark:bg-boxdark sm:px-7.5 lg:w-[60vw] lg:px-8 xl:w-[70vw] xl:pb-1">
+        <div className="overflow-auto">
           <table className="w-full table-auto">
             <thead>
-              <tr className="">
-                <th className="border border-gray-200 px-4 py-2">Actions</th>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-200 px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">
+                  Actions
+                </th>
                 {headers.map((header) => (
-                  <th key={header} className="border border-gray-200 px-4 py-2">
+                  <th
+                    key={header}
+                    className="border border-gray-200 px-4 py-3 font-semibold text-gray-700 dark:text-gray-300"
+                  >
                     {header.charAt(0).toUpperCase() + header.slice(1)}
                   </th>
                 ))}
@@ -212,12 +484,16 @@ const VehicleManagement = () => {
             <tbody>
               {Data &&
                 Data.map((customer, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
+                  <tr
+                    key={index}
+                    className="transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                  >
+                    {/* Actions Column */}
                     <td className="border border-gray-200 px-4 py-2">
-                      <div className="flex items-center  justify-center gap-4">
+                      <div className="flex items-center justify-center gap-4">
                         <button
                           onClick={() => handleEditData(customer)}
-                          className="hover:text-primary "
+                          className="transform transition-all duration-200 hover:scale-110 hover:text-primary"
                         >
                           <svg
                             className="fill-current"
@@ -238,7 +514,7 @@ const VehicleManagement = () => {
                           </svg>
                         </button>
 
-                        <button className="hover:text-red">
+                        <button className="transform transition-all duration-200 hover:scale-110 hover:text-red-600">
                           <svg
                             className="fill-current"
                             width="18"
@@ -250,47 +526,107 @@ const VehicleManagement = () => {
                         </button>
                       </div>
                     </td>
+
+                    {/* Loop through headers to display data */}
                     {headers.map((header) => {
                       let value;
+                      // Handle nested fields (e.g., "RTO?.RTO_No")
                       if (header.includes(".")) {
                         value = header
                           .split(".")
-                          .reduce((o, i) => o[i], customer);
+                          .reduce((o, i) => (o ? o[i] : null), customer);
                       } else {
                         value = customer[header];
                       }
 
-                      if (typeof value === "object" && value !== null) {
-                        if (header === "contact") {
-                          return (
-                            <td
-                              key={header}
-                              className="border border-gray-200 px-4 py-2"
-                            >
-                              {value.email} / {value.phone}
-                            </td>
-                          );
-                        }
-                        // Check if the object is a document type and show the upload option
-                        if (header === "document") {
-                          return (
-                            <td
-                              key={header}
-                              className="border border-gray-200 px-4 py-2"
-                            >
-                              <input
-                                type="file"
-                                accept="application/pdf,image/*"
-                              />
-                            </td>
-                          );
-                        }
+                      if (
+                        header === "TyreDetails" &&
+                        Array.isArray(customer.TyreDetails)
+                      ) {
                         return (
                           <td
                             key={header}
                             className="border border-gray-200 px-4 py-2"
                           >
-                            {JSON.stringify(value)}
+                            <table className="w-full table-auto">
+                              <thead>
+                                <tr>
+                                  {Object.keys(customer.TyreDetails[0]).map(
+                                    (key) => (
+                                      <th key={key}>{key}</th>
+                                    ),
+                                  )}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {customer.TyreDetails.map(
+                                  (tyre: any, tyreIndex: any) => (
+                                    <tr key={tyreIndex}>
+                                      {Object.keys(tyre).map((key) => (
+                                        <td key={key}>{tyre[key]}</td>
+                                      ))}
+                                    </tr>
+                                  ),
+                                )}
+                              </tbody>
+                            </table>
+                          </td>
+                        );
+                      }
+
+                      if (header === "document") {
+                        return (
+                          <td
+                            key={header}
+                            className="border border-gray-200 px-4 py-2"
+                          >
+                            <input
+                              type="file"
+                              accept="application/pdf,image/*"
+                            />
+                          </td>
+                        );
+                      }
+                      
+                      if (typeof value === "object" && value !== null) {
+                        return (
+                          <td
+                            key={header}
+                            className="border border-gray-200 px-4 py-2"
+                          >
+                            <table className="w-full table-auto">
+                              <thead>
+                                <tr>
+                                  {Object.keys(value).map((key) => (
+                                    <th key={key}>{key}</th>
+                                  ))}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr className=" gap-2">
+                                  {Object.entries(value).map(([key, val]) => (
+                                    <td key={key}>
+                                      {/* <strong>{key}: </strong> */}
+                                      {typeof val === "object" &&
+                                      val !== null ? (
+                                        <div className="ml-4">
+                                          {Object.entries(val).map(
+                                            ([subKey, subVal]) => (
+                                              <div key={subKey}>
+                                                <strong>{subKey}: </strong>
+                                                {String(subVal)}
+                                              </div>
+                                            ),
+                                          )}
+                                        </div>
+                                      ) : (
+                                        String(val)
+                                      )}
+                                    </td>
+                                  ))}
+                                </tr>
+                              </tbody>
+                            </table>
                           </td>
                         );
                       }
@@ -298,7 +634,7 @@ const VehicleManagement = () => {
                       return (
                         <td
                           key={header}
-                          className="border border-gray-200 px-4 py-2"
+                          className="border border-gray-200 px-4 py-2 text-gray-700 dark:text-gray-300"
                         >
                           {value || ""}
                         </td>
@@ -314,9 +650,11 @@ const VehicleManagement = () => {
       {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Vehicle"}
+          title={
+            VehicleType === "Own" ? "Add Own Vehicle" : "Add Hired Vehicle"
+          }
           onClose={handleCloseModal}
-          fields={transformToFields(defaultData)}
+          fields={transformToFields(getDataForVehicleType(VehicleType))}
           onSubmit={handleSubmit}
         />
       )}
