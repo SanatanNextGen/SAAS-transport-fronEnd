@@ -1,8 +1,8 @@
 [
   {
     "id": "1",
-    "biltyNo": "BIL12345",
-    "biltyDate": "2025-01-10",
+    "billtyNo": "BIL12345",
+    "billtyDate": "2025-01-10",
     "customerName": "John Doe",
     "freightAmount": 1000,
     "cgst": 60,
@@ -22,8 +22,8 @@
   },
   {
     "id": "2",
-    "biltyNo": "BIL12346",
-    "biltyDate": "2025-01-11",
+    "billtyNo": "BIL12346",
+    "billtyDate": "2025-01-11",
     "customerName": "Jane Smith",
     "freightAmount": 1500,
     "cgst": 90,
@@ -43,8 +43,8 @@
   },
   {
     "id": "3",
-    "biltyNo": "BIL12347",
-    "biltyDate": "2025-01-12",
+    "billtyNo": "BIL12347",
+    "billtyDate": "2025-01-12",
     "customerName": "Mark Johnson",
     "freightAmount": 2000,
     "cgst": 120,
@@ -64,8 +64,8 @@
   },
   {
     "id": "4",
-    "biltyNo": "BIL12348",
-    "biltyDate": "2025-01-13",
+    "billtyNo": "BIL12348",
+    "billtyDate": "2025-01-13",
     "customerName": "Alice Green",
     "freightAmount": 1800,
     "cgst": 108,
@@ -85,8 +85,8 @@
   },
   {
     "id": "5",
-    "biltyNo": "BIL12349",
-    "biltyDate": "2025-01-14",
+    "billtyNo": "BIL12349",
+    "billtyDate": "2025-01-14",
     "customerName": "Bob White",
     "freightAmount": 2500,
     "cgst": 150,

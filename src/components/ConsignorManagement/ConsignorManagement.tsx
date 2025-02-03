@@ -5,13 +5,8 @@ import FormModal from "../FormModal/FormModal";
 
 const ConsignorManagement = () => {
   const defaultData = {
-    id: "",
     firstName: " ",
     lastName: " ",
-    contact: {
-      email: "",
-      phone: "",
-    },
     address: {
       street: "",
       city: "",
@@ -19,6 +14,11 @@ const ConsignorManagement = () => {
       zip: "",
     },
     gstin: "",
+    contact: {
+      email: "",
+      phone: "",
+    },
+
     bankDetails: {
       accountNumber: "",
       ifscCode: "",
@@ -323,7 +323,7 @@ const ConsignorManagement = () => {
       {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Vehicle"}
+          title={"Add New Consignor"}
           onClose={handleCloseModal}
           fields={transformToFields(defaultData)}
           onSubmit={handleSubmit}
@@ -331,7 +331,7 @@ const ConsignorManagement = () => {
       )}
       {isEditModalOpen && selectedData && (
         <FormModal
-          title={"Edit Vehicle"}
+          title={"Edit Consignor"}
           onClose={handleCloseModal}
           fields={transformToFields(selectedData)}
           onSubmit={handleSubmit}

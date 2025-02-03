@@ -1,8 +1,8 @@
 [
     {
       "id": "1",
-      "biltyNo": "BIL12345",
-      "biltyDate": "2025-01-10",
+      "billtyNo": "BIL12345",
+      "billtyDate": "2025-01-10",
       "natureOfGoods": "Electronics",
       "items": [
         {
@@ -18,8 +18,8 @@
     },
     {
       "id": "2",
-      "biltyNo": "BIL12346",
-      "biltyDate": "2025-01-11",
+      "billtyNo": "BIL12346",
+      "billtyDate": "2025-01-11",
       "natureOfGoods": "Furniture",
       "items": [
         {
@@ -39,8 +39,8 @@
     },
     {
       "id": "3",
-      "biltyNo": "BIL12347",
-      "biltyDate": "2025-01-12",
+      "billtyNo": "BIL12347",
+      "billtyDate": "2025-01-12",
       "natureOfGoods": "Clothing",
       "items": [
         {
@@ -56,8 +56,8 @@
     },
     {
       "id": "4",
-      "biltyNo": "BIL12348",
-      "biltyDate": "2025-01-13",
+      "billtyNo": "BIL12348",
+      "billtyDate": "2025-01-13",
       "natureOfGoods": "Books",
       "items": [
         {
@@ -73,8 +73,8 @@
     },
     {
       "id": "5",
-      "biltyNo": "BIL12349",
-      "biltyDate": "2025-01-14",
+      "billtyNo": "BIL12349",
+      "billtyDate": "2025-01-14",
       "natureOfGoods": "Appliances",
       "items": [
         {

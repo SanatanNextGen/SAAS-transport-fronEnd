@@ -1,8 +1,8 @@
 [
   {
     "id": "1",
-    "biltyNo": "BLT001",
-    "biltyDate": "2023-10-01",
+    "billtyNo": "BLT001",
+    "billtyDate": "2023-10-01",
     "natureOfGoods": "Electronics",
     "items": [
       { "name": "Laptop", "quantity": 5 },
@@ -23,8 +23,8 @@
   },
   {
     "id": "2",
-    "biltyNo": "BLT002",
-    "biltyDate": "2023-10-02",
+    "billtyNo": "BLT002",
+    "billtyDate": "2023-10-02",
     "natureOfGoods": "Furniture",
     "items": [
       { "name": "Chair", "quantity": 20 },
@@ -45,8 +45,8 @@
   },
   {
     "id": "3",
-    "biltyNo": "BLT003",
-    "biltyDate": "2023-10-03",
+    "billtyNo": "BLT003",
+    "billtyDate": "2023-10-03",
     "natureOfGoods": "Clothing",
     "items": [
       { "name": "T-Shirt", "quantity": 50 },
@@ -67,8 +67,8 @@
   },
   {
     "id": "4",
-    "biltyNo": "BLT004",
-    "biltyDate": "2023-10-04",
+    "billtyNo": "BLT004",
+    "billtyDate": "2023-10-04",
     "natureOfGoods": "Books",
     "items": [
       { "name": "Novel", "quantity": 100 },
@@ -89,8 +89,8 @@
   },
   {
     "id": "5",
-    "biltyNo": "BLT005",
-    "biltyDate": "2023-10-05",
+    "billtyNo": "BLT005",
+    "billtyDate": "2023-10-05",
     "natureOfGoods": "Toys",
     "items": [
       { "name": "Action Figure", "quantity": 40 },

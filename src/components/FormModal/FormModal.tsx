@@ -1,14 +1,20 @@
+import Image from "next/image";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa"; // Import the Plus Icon from react-icons
 
 interface TyreDetail {
-  TyreNo: string;
-  TyreType: string;
-  Makers: string;
-  FrontRear: string;
-  FittedOn: string;
   BillNo: string;
   BillDate: string;
+  DealerName: string;
+  rate: string;
+  Makers: string;
+  warranty: string;
+  TyreNo: string;
+  TyreModel: string; // "New", "Old", or "Resole"
+  TyreType: string; // "New", "Old", or "Resole"
+  FrontRear: string; // "Front" or "Rear"
+  FittedOnDate: string;
+  removedOnDate: string;
   StartKm: number;
   EndKm: number;
 }
@@ -48,27 +54,22 @@ export default function FormModal({
   const [imagePreview, setImagePreview] = useState<string | null>(null); // State for image preview
 
   const handleUploadClick = (fieldId: string) => {
-    // Create a file input element dynamically
     const input = document.createElement("input");
     input.type = "file";
     input.accept = "image/*"; // Accept only image files
 
-    // Trigger the file input when the button is clicked
     input.click();
 
-    // Handle the file selection when the user selects a file
     input.addEventListener("change", (event) => {
-      const target = event.target as HTMLInputElement; // Cast event.target to HTMLInputElement
+      const target = event.target as HTMLInputElement;
       if (target && target.files) {
         const file = target.files[0]; // Get the selected file
         if (file) {
-          // Update only the specific field (fieldId) in formData for file upload
           setFormData((prevFormData) => ({
             ...prevFormData,
             [fieldId]: file, // Update the file field only
           }));
 
-          // Generate a preview URL for the image
           const previewUrl = URL.createObjectURL(file);
           setImagePreview(previewUrl); // Set the image preview URL
         }
@@ -81,7 +82,7 @@ export default function FormModal({
     fieldId: string,
     tyreIndex?: number,
   ) => {
-    const { name, type, checked, value } = e.target;
+    const { name, value } = e.target;
 
     if (tyreIndex !== undefined) {
       // Handle tyre details input change
@@ -101,21 +102,25 @@ export default function FormModal({
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent the default form submission
-    const fullFormData = { ...formData, tyreDetails }; // Include tyre details in the form data
-    onSubmit(fullFormData); // Pass the form data to the parent component
+    e.preventDefault();
+    const fullFormData = { ...formData, tyreDetails };
+    onSubmit(fullFormData);
   };
 
   const addTyreDetail = () => {
-    // Add a new empty tyre detail object when the user clicks the plus button
     const newTyreDetail: TyreDetail = {
-      TyreNo: "",
-      TyreType: "",
-      Makers: "",
-      FrontRear: "",
-      FittedOn: "",
       BillNo: "",
       BillDate: "",
+      DealerName: "",
+      rate: "",
+      Makers: "",
+      warranty: "",
+      TyreNo: "",
+      TyreModel: "",
+      TyreType: "",
+      FrontRear: "",
+      FittedOnDate: "",
+      removedOnDate: "",
       StartKm: 0,
       EndKm: 0,
     };
@@ -128,12 +133,21 @@ export default function FormModal({
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
-  // Check if any field is related to tyre details (based on the placeholder or name)
-  const hasTyreDetailsField = fields.some(
-    (field) =>
-      (field.placeholder && field.placeholder.toLowerCase().includes("tyre")) ||
-      (field.name && field.name.toLowerCase().includes("tyre")),
-  );
+  const categorizeFields = () => {
+    const categorized: { [key: string]: Field[] } = {};
+
+    fields.forEach((field) => {
+      const category = field.id.split(".")[0]; // Extract the category from the ID (e.g., "Battery", "Document", etc.)
+      if (!categorized[category]) {
+        categorized[category] = [];
+      }
+      categorized[category].push(field);
+    });
+
+    return categorized;
+  };
+
+  const categorizedFields = categorizeFields();
 
   return (
     <div className="fixed inset-0 z-50 mt-10 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50 text-black">
@@ -149,57 +163,61 @@ export default function FormModal({
           className="max-h-96 space-y-4 overflow-y-auto"
           onSubmit={handleSubmit}
         >
-          {fields.map((field) => (
-            <div key={field.id} className="mb-4">
-              {field.type === "file" ? (
-                <div className="mb-1 text-left font-medium">
-                  {capitalizeWords(field.name)}
-                </div>
-              ) : (
-                <div className="mb-1 text-left font-medium">
-                  {capitalizeWords(field.placeholder)}
-                </div>
-              )}
-              {field.type === "file" ? (
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => handleUploadClick(field.id)} // Ensure it's a button and not a form submission
-                    className="rounded-md bg-blue-500 px-4 py-2 text-white"
-                  >
-                    Upload
-                  </button>
-                  {/* Display the image preview if available */}
-                  {imagePreview && (
-                    <div className="mt-2">
-                      <img
-                        src={imagePreview}
-                        alt="Image Preview"
-                        className="h-auto w-full rounded-md"
+          {/* Loop through categorized fields and create sections dynamically */}
+          {Object.keys(categorizedFields).map((category) => (
+            <div key={category} className="mb-4 rounded-md border p-4">
+              <h3 className="text-lg font-semibold">
+                {capitalizeWords(category)} Details
+              </h3>
+              <div className="mb-4">
+                {categorizedFields[category].map((field) => (
+                  <div key={field.id} className="mb-4">
+                    <label className="font-medium">
+                      {capitalizeWords(field.placeholder)}
+                    </label>
+                    {field.type === "file" ? (
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => handleUploadClick(field.id)}
+                          className="rounded-md bg-blue-500 px-4 py-2 text-white"
+                        >
+                          Upload
+                        </button>
+                        {/* Display the image preview if available */}
+                        {imagePreview && (
+                          <div className="mt-2">
+                            <Image
+                              width={20}
+                              height={20}
+                              src={imagePreview}
+                              alt="Image Preview"
+                              className="h-auto w-full rounded-md"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <input
+                        type={field.type}
+                        id={field.id}
+                        name={field.name}
+                        placeholder={field.placeholder}
+                        value={formData[field.id] || ""}
+                        onChange={(e) => handleInputChange(e, field.id)}
+                        className="w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
                       />
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <input
-                  type={field.type}
-                  id={field.id}
-                  name={field.name}
-                  placeholder={field.placeholder}
-                  value={formData[field.id] || ""}
-                  onChange={(e) => handleInputChange(e, field.id)}
-                  className="w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
-                />
-              )}
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
 
-          {/* Only render Tyre Details if fields contain tyre-related fields */}
-          {hasTyreDetailsField && (
-            <div className="mb-4">
-              <h3 className="mb-2 text-lg font-semibold text-gray-700">
-                Tyre Details
-              </h3>
+          {/* Only render Tyre Details if tyre fields are available */}
+          {tyreDetails.length > 0 && (
+            <div className="rounded-md border p-4">
+              <h3 className="text-lg font-semibold">Tyre Details</h3>
               {tyreDetails.map((tyre, index) => (
                 <div key={index} className="space-y-2">
                   {Object.keys(tyre).map((key) => (
@@ -224,11 +242,12 @@ export default function FormModal({
                 onClick={addTyreDetail}
                 className="mt-2 text-blue-500 hover:text-blue-700"
               >
-                <FaPlus /> {/* Plus Icon to add new tyre details */}
+                <FaPlus /> Add More Tyre Details
               </button>
             </div>
           )}
 
+          {/* Submit and Cancel Buttons */}
           <button
             type="submit"
             className="w-full rounded-md bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"

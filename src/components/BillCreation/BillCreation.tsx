@@ -1,6 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import {
+  CheckCircle2,
+  FileText,
+  Truck,
+  RefreshCcw,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 
 interface Row {
   paymentMode?: string;
@@ -10,12 +18,12 @@ interface Row {
 
 const FormPage: React.FC = () => {
   const [Data, setData] = useState<any[]>([]);
-  const [selectedData, setSelectedData] = useState<any[]>([]); // Array to store selected bilties
-  const [rows, setRows] = useState<Row[]>([{}]); // Explicit type for rows
+  const [selectedBilty, setSelectedBilty] = useState<any[]>([]);
+  const [selectedType, setSelectedType] = useState<string>("");
+  const [rows, setRows] = useState<Row[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [totals, setTotals] = useState({ debit: 0, credit: 0 }); // State to track totals
+  const [totals, setTotals] = useState({ debit: 0, credit: 0 });
 
-  // Handle adding a new row
   const addRow = () => {
     setRows([...rows, {}]);
   };
@@ -34,19 +42,17 @@ const FormPage: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  // Handle checkbox change
   const handleCheckboxChange = (id: string) => {
-    setSelectedData((prevSelectedData) => {
+    setSelectedBilty((prevSelectedData) => {
       if (prevSelectedData.some((selected) => selected.id === id)) {
-        return prevSelectedData.filter((bilty) => bilty.id !== id); // Remove if already selected
+        return prevSelectedData.filter((bilty) => bilty.id !== id);
       } else {
         const selectedBilty = Data.find((bilty) => bilty.id === id);
-        return [...prevSelectedData, selectedBilty]; // Add if not selected
+        return [...prevSelectedData, selectedBilty];
       }
     });
   };
 
-  // Handle input changes for selected data
   const handleInputChange = (
     index: number,
     field: string,
@@ -61,7 +67,6 @@ const FormPage: React.FC = () => {
 
     setRows(updatedRows);
 
-    // Update the totals
     let debitTotal = 0;
     let creditTotal = 0;
 
@@ -74,48 +79,107 @@ const FormPage: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="mb-6 flex flex-col items-center text-center">
-        <button
-          onClick={selectBuilty}
-          className="hover:bg-primary-dark rounded-lg bg-primary px-6 py-3 text-lg font-semibold text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
-        >
-          Select the Advance Payment Voucher for bill creation
-        </button>
-
-        {isOpen && (
-          <div className="dark:bg-dark-bg mt-4 h-[35vw] w-full max-w-xs overflow-y-auto rounded-lg bg-white p-4 shadow-lg xl:h-[10vw]">
-            {Data.map((bilty) => (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+        {/* Header with Progress Indicator */}
+        <div className="bg-blue-600 p-6 text-white">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center text-2xl font-bold">
+              <FileText className="mr-3" /> Billing Form
+            </h1>
+            <div className="flex items-center space-x-4">
               <div
-                key={bilty.id}
-                className=" mb-3 flex items-center space-x-3 "
+                className={`flex items-center ${selectedBilty.length > 0 ? "text-white" : "text-blue-300"}`}
               >
-                <input
-                  type="checkbox"
-                  id={`bilty-${bilty.id}`}
-                  checked={selectedData.some(
-                    (selected) => selected.id === bilty.id,
-                  )}
-                  onChange={() => handleCheckboxChange(bilty.id)}
-                  className="h-5 w-5 rounded-md text-primary focus:ring-2 focus:ring-primary dark:text-secondary dark:focus:ring-secondary"
-                />
-                <label
-                  htmlFor={`bilty-${bilty.id}`}
-                  className="font-medium text-black "
-                >
-                  {bilty.biltyNo}
-                </label>
+                <Truck className="mr-2" />
+                <span>Select Bilty</span>
               </div>
-            ))}
+              <ChevronDown className="text-blue-300" />
+              <div
+                className={`flex items-center ${selectedType ? "text-white" : "text-blue-300"}`}
+              >
+                <CheckCircle2 className="mr-2" />
+                <span>Bill Type</span>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
 
-      {selectedData.length > 0 ? (
-        <div className="flex min-h-screen w-[92vw] items-center justify-center bg-gray-50 p-6 xl:w-[75vw]">
-          <div className="font-sans overflow-x-auto rounded-lg border border-gray-300 bg-white text-gray-800 shadow-lg">
+        {/* Bilty Selection Section */}
+        <div className="p-6">
+          <div className="mb-6 flex flex-col items-center text-center">
+            <button
+              onClick={selectBuilty}
+              className="flex items-center rounded-lg bg-blue-500 px-6 py-3 text-lg font-semibold text-white shadow-lg transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              <Truck className="mr-3" />
+              Select The Bilty
+            </button>
+
+            {isOpen && (
+              <div className="mt-4 max-h-[35vh] w-full max-w-md overflow-y-auto rounded-lg bg-blue-50 p-4 shadow-inner">
+                {Data.map((bilty) => (
+                  <div
+                    key={bilty.id}
+                    className="mb-3 flex items-center space-x-3 rounded-md p-2 transition hover:bg-blue-100"
+                  >
+                    <input
+                      type="checkbox"
+                      id={`bilty-${bilty.id}`}
+                      checked={selectedBilty.some(
+                        (selected) => selected.id === bilty.id,
+                      )}
+                      onChange={() => handleCheckboxChange(bilty.id)}
+                      className="h-5 w-5 rounded-md text-blue-600 focus:ring-2 focus:ring-blue-500"
+                    />
+                    <label
+                      htmlFor={`bilty-${bilty.id}`}
+                      className="flex-grow font-medium text-gray-700"
+                    >
+                      {bilty.biltyNo}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Bill Type Selection */}
+          {selectedBilty.length > 0 && (
+            <div className="mb-6 rounded-lg bg-blue-50 p-4 shadow-sm">
+              <p className="mb-3 flex items-center text-sm font-semibold text-blue-800">
+                <RefreshCcw className="mr-2" /> Select Bill Type
+              </p>
+              <div className="flex justify-center space-x-6">
+                {["RCM", "FCM"].map((label) => (
+                  <label
+                    key={label}
+                    className={`flex cursor-pointer items-center rounded-lg p-3 transition ${
+                      selectedType === label
+                        ? "bg-blue-500 text-white"
+                        : "bg-white text-blue-600 hover:bg-blue-100"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="billType"
+                      value={label}
+                      checked={selectedType === label}
+                      onChange={() => setSelectedType(label)}
+                      className="hidden"
+                    />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {selectedType && (
+          <div className="min-h-screen w-[85vw] rounded-lg border  border-gray-200 bg-white shadow-lg xl:w-[65vw]">
             {/* Header Section */}
-            <div className="flex items-center justify-between rounded-t-lg border-b border-gray-300 bg-blue-50 p-6">
+            <div className="flex  items-center  justify-between overflow-x-auto rounded-t-lg border-b border-gray-200 bg-blue-50 p-6">
               <div className="flex items-center">
                 <Image
                   className="rounded-md"
@@ -141,25 +205,48 @@ const FormPage: React.FC = () => {
                   Mobile: 9782760844 | Email: proprie@sanatanexpress.in
                 </p>
               </div>
+              <div className="flex-1 px-6 text-center">
+                <h1 className="text-2xl font-semibold uppercase text-blue-700">
+                  PIRAMAL PHARMA LTD.
+                </h1>
+                <p className="text-xs text-gray-600">
+                  PAN No: ABKCS2779J | GSTIN: 23ABKCS2779J1ZV
+                </p>
+                <p className="text-xs text-gray-600">
+                  Shop No 10, 1st Floor, Plot No 888, Loha Mandi, Dewas Naka,
+                  Indore 452010
+                </p>
+                <p className="text-xs text-gray-600">
+                  Mobile: 9782760844 | Email: proprie@sanatanexpress.in
+                </p>
+              </div>
             </div>
 
             {/* Form Body */}
-            <div className="space-y-8 p-6 text-sm">
-              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
-
-              <div className="mb-6 overflow-x-auto border-b border-gray-300 pb-6">
+            <div className="space-y-8  overflow-x-auto p-6 text-sm">
+              {/* Bilty Details Table */}
+              <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
                 <table className="w-full border-collapse text-sm text-gray-800">
-                  <thead className="bg-blue-100">
+                  <thead className="bg-blue-50">
                     <tr>
-                      <th className="p-4">Challan No</th>
+                      <th className="p-4">S No</th>
                       <th className="p-4">Bilty No</th>
                       <th className="p-4">Bilty Date</th>
+                      <th className="p-4">From</th>
+                      <th className="p-4">To</th>
                       <th className="p-4">Vehicle No</th>
-                      <th className="p-4">Advance Amount</th>
+                      <th className="p-4">Material</th>
+                      <th className="p-4">No Of Packages</th>
+                      <th className="p-4">CFT</th>
+                      <th className="p-4">Charget WT(MT)</th>
+                      <th className="p-4">Freight Amount</th>
+                      <th className="p-4">Halting Charges</th>
+                      <th className="p-4">Unloading Charges</th>
+                      <th className="p-4">Total Amount</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {selectedData.map((bilty) => (
+                    {selectedBilty.map((bilty) => (
                       <tr
                         key={bilty.id}
                         className="transition duration-200 hover:bg-gray-50"
@@ -167,106 +254,146 @@ const FormPage: React.FC = () => {
                         <td className="p-4">{bilty.id}</td>
                         <td className="p-4">{bilty.biltyNo}</td>
                         <td className="p-4">{bilty.biltyDate}</td>
-                        <td className="p-4">
-                          {bilty.shipmentDetails.vehicleNo}
-                        </td>
-                        <td className="p-4">
-                          <input placeholder="Enter the Advance Amount " />
-                        </td>
+                        <td className="p-4">{bilty.from}</td>
+                        <td className="p-4">{bilty.to}</td>
+                        <td className="p-4">{bilty.vehicleNo}</td>
+                        <td className="p-4">{bilty.material}</td>
+                        <td className="p-4">{bilty.noOfPackages}</td>
+                        <td className="p-4">{bilty.cft}</td>
+                        <td className="p-4">{bilty.chargeWt}</td>
+                        <td className="p-4">{bilty.freightAmount}</td>
+                        <td className="p-4">{bilty.haltingCharges}</td>
+                        <td className="p-4">{bilty.unloadingCharges}</td>
+                        <td className="p-4">{bilty.totalAmount}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-              <div className="w-full max-w-7xl rounded-lg bg-white shadow-lg">
-                <div className="overflow-x-auto">
-                  <table className="min-w-full table-auto border-collapse border border-gray-300 text-center">
-                    <thead className="bg-gray-200">
-                      <tr>
-                        <th className="p-3 text-sm text-gray-700">
-                          Payment Mode
-                        </th>
-                        <th className="p-3 text-sm text-gray-700">Debit</th>
-                        <th className="p-3 text-sm text-gray-700">Credit</th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white">
-                      {rows.map((_, rowIndex) => (
-                        <tr key={rowIndex}>
-                          {Array.from({ length: 3 }).map((_, index) => {
-                            const fieldName =
-                              index === 0
-                                ? "paymentMode"
-                                : index === 1
-                                  ? "debit"
-                                  : "credit";
 
-                            return (
-                              <td
-                                key={index}
-                                className="relative border border-gray-300 p-3"
-                              >
-                                <div className="flex items-center justify-between">
-                                  <input
-                                    type="text"
-                                    className="w-full rounded-md border border-gray-300 p-2 text-center text-sm"
-                                    placeholder=""
-                                    value={rows[rowIndex][fieldName] || ""}
-                                    onChange={(e) =>
-                                      handleInputChange(
-                                        rowIndex,
-                                        fieldName,
-                                        e.target.value,
-                                        fieldName === "debit"
-                                          ? "debit"
-                                          : "credit",
-                                      )
-                                    }
-                                  />
-                                  {/* Display the "+" button outside the input box */}
-                                  {index === 2 &&
-                                    rowIndex === rows.length - 1 && (
-                                      <button
-                                        onClick={addRow}
-                                        className="ml-2 p-2 text-3xl font-bold text-gray-600"
-                                      >
-                                        +
-                                      </button>
-                                    )}
-                                </div>
+              {/* RCM/FCM Details */}
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div className="col-span-2 overflow-x-auto rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                  {selectedType === "RCM" ? (
+                    <table className="w-full border-collapse text-sm">
+                      <tbody>
+                        {[
+                          ["Reporting Date"],
+                          ["Unloading Date"],
+                          ["Payment Terms :- 15 Days"],
+                          ["GST 5%(IGST)"],
+                          ["GST 5%(IGST)"],
+                          ["Person Liable For Paying GST"],
+                        ].map(([label], index) => (
+                          <tr key={index} className="border-b border-gray-200">
+                            <td className="px-3 py-2 font-medium text-gray-700">
+                              {label}
+                            </td>
+                            {label !== "Payment Terms :- 15 Days" && (
+                              <td className="border-r border-gray-200 px-3 py-2 text-center font-semibold">
+                                <input
+                                  type="text"
+                                  className="w-full rounded border border-gray-200 pr-20 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                                />
                               </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-
-                    <tfoot className="bg-gray-200">
-                      <tr>
-                        <th className="p-3 text-sm text-gray-700">Total</th>
-                        <td className="p-3">{totals.debit.toFixed(2)}</td>
-                        <td className="p-3">{totals.credit.toFixed(2)}</td>
-                      </tr>
-                    </tfoot>
-                  </table>
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  ) : (
+                    <table className="w-full border-collapse text-sm">
+                      <tbody>
+                        {[
+                          ["Total Billing Amount"],
+                          ["CGST 6%(CGST)"],
+                          ["SGST 6%(SGST)"],
+                          ["IGST 5%(IGST)"],
+                          ["Grand Total Amount with GST"],
+                        ].map(([label], index) => (
+                          <tr key={index} className="border-b border-gray-200">
+                            <td className="px-3 py-2 font-medium text-gray-700">
+                              {label}
+                            </td>
+                            {label !== "Payment Terms :- 15 Days" && (
+                              <td className="border-r border-gray-200 px-3 py-2 text-center font-semibold">
+                                <input
+                                  type="text"
+                                  className="w-full rounded border border-gray-200 pr-20 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                                />
+                              </td>
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
                 </div>
               </div>
 
-              {/* Submit Button (optional) */}
-              <div className="mt-8 items-center text-center">
-                <button className="rounded-md bg-blue-600 px-6 py-3 text-lg text-white shadow-md hover:bg-blue-700 focus:outline-none">
-                  Submit Challan
-                </button>
+              {/* Total Amount Section */}
+              <div className="  rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                <div className=" Flex mb-4">
+                  <div className="text-sm font-medium text-gray-700">
+                    Total Amount (In Figures)
+                  </div>
+                  <div className="text-lg font-semibold text-gray-900">
+                    1000
+                  </div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-700">
+                    Total Amount (In Words)
+                  </div>
+                  <div className="text-lg font-semibold text-gray-900">
+                    Thousand Rupees
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-[85vw] xl:w-[60vw]">
+                <div className="flex justify-between overflow-x-auto rounded-t-lg border-b border-gray-200 bg-blue-50 p-6 ">
+                  <div className="flex-1   px-6 ">
+                    <h1 className="text-2xl font-semibold uppercase text-blue-700">
+                      Sanatan Express India Pvt. Ltd.
+                    </h1>
+                    <p className="text-xs text-gray-600">
+                      Bank Name: ICICI BANK LTD
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      Account Number: 384805000870
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      IFSC Code: ICIC0003848
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      PAN No: ABKCS2779J | GSTIN: 23ABKCS2779J1ZV
+                    </p>
+                  </div>
+                  <div className="flex-1 px-6 text-center">
+                    <h1 className="text-2xl font-semibold uppercase text-blue-700">
+                      FOR Sanatan Express India Pvt. Ltd.
+                    </h1>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="text-center text-gray-500">
-          Select Bilty(s) to view details.
-        </div>
-      )}
-    </>
+        )}
+
+        {/* Remaining form content would follow similar design principles */}
+        {selectedType && (
+          <div className="p-6">
+            {/* Rest of the existing form content with similar refined styling */}
+            <div className="text-center">
+              <button className="mx-auto flex items-center rounded-lg bg-blue-600 px-8 py-3 text-white transition hover:bg-blue-700">
+                <CheckCircle2 className="mr-2" /> Submit Challan
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

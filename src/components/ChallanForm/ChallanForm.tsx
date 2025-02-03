@@ -242,12 +242,13 @@ const ChallanForm: React.FC = () => {
                   </div>
                 </div>
               ))}
-              <div className="mb-6 overflow-x-auto border-b border-gray-300 pb-6">
+              <div className="mb-6 overflow-x-auto border-b border-gray-300 pb-6 text-center">
                 <table className="w-full border-collapse text-sm text-gray-800">
                   <thead className="bg-blue-100">
                     <tr>
                       <th className="p-4">Bilty No</th>
                       <th className="p-4">Bilty Date</th>
+                      <th className="p-4">Destination</th>
                       <th className="p-4">Nature Of Goods</th>
                       <th className="p-4">No Of Packages</th>
                       <th className="p-4">Desp. Weight</th>
@@ -262,6 +263,7 @@ const ChallanForm: React.FC = () => {
                       >
                         <td className="p-4">{bilty.biltyNo}</td>
                         <td className="p-4">{bilty.biltyDate}</td>
+                        <td className="p-4">{bilty.destination}</td>
                         <td className="p-4">{bilty.natureOfGoods}</td>
                         <td className="p-4">{bilty.items.length}</td>
                         <td className="p-4">{bilty.weight}</td>
@@ -272,6 +274,190 @@ const ChallanForm: React.FC = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              <div className="mb-6 space-y-6">
+                {/* Freight and Charges Section */}
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                  <div className="col-span-2 overflow-x-auto rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <table className="w-full border-collapse text-sm">
+                      <tbody>
+                        {[
+                          ["Lorry Hire", "Charge Wt:"],
+                          [
+                            "(+) Loading Labour",
+                            "Total Amount on which TDS deducted",
+                          ],
+                          [
+                            "(+) Loading Detention",
+                            "Late Delivery Penalty Per Day:",
+                          ],
+                          [
+                            "(+) Other Charge",
+                            "Late Receiving Submission Penalty Per Day:",
+                          ],
+                          ["( ) Total Freight", "EXP. POD Submit Date:"],
+                          ["(-) TDS (@)", ""],
+                          ["( - ) PLI", "Delivery Branch:"],
+                          ["( - ) Loading Labour", "Phone:"],
+                          ["( ) Other Charge", ""],
+                          ["(-) Advance (A)", "Penalty Per Day:"],
+                          ["(=) Balance", ""],
+                        ].map(([label, rightLabel], index) => (
+                          <tr key={index} className="border-b border-gray-200">
+                            <td className="px-3 py-2 font-medium text-gray-700">
+                              {label}
+                            </td>
+                            <td className="border-r border-gray-200 px-3 py-2">
+                              <input
+                                type="text"
+                                className="w-full rounded border border-gray-200 pr-20 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                              />
+                            </td>
+                            {rightLabel && (
+                              <>
+                                <td
+                                  className="px-3 py-2 font-medium text-gray-700"
+                                  colSpan={2}
+                                >
+                                  {rightLabel}
+                                </td>
+                                <td className="border-r border-gray-200 px-3 py-2">
+                                  <input
+                                    type="text"
+                                    className="w-full rounded border border-gray-200 pr-20 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                                  />
+                                </td>
+                              </>
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Details Sections */}
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  {/* Truck Supplier Details */}
+                  <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <p className="mb-3 text-sm font-semibold text-gray-800">
+                      Truck Supplier Details:
+                    </p>
+                    <div className="space-y-3">
+                      {["Name", "Slip No./Date", "Phone"].map(
+                        (label, index) => (
+                          <div key={index}>
+                            <p className="mb-1 text-xs font-medium text-gray-600">
+                              {label}
+                            </p>
+                            <input
+                              type="text"
+                              className="w-full rounded border border-gray-200 p-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                            />
+                          </div>
+                        ),
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Lorry Driver Details */}
+                  <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <p className="mb-3 text-sm font-semibold text-gray-800">
+                      Lorry Driver Details:
+                    </p>
+                    <div className="space-y-3">
+                      {["Name", "Phone", "License No.", "Expiry Date"].map(
+                        (label, index) => (
+                          <div key={index}>
+                            <p className="mb-1 text-xs font-medium text-gray-600">
+                              {label}
+                            </p>
+                            <input
+                              type="text"
+                              className="w-full rounded border border-gray-200 p-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                            />
+                          </div>
+                        ),
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Current Lorry Owner Details */}
+                  <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <p className="mb-3 text-sm font-semibold text-gray-800">
+                      Current Lorry Owner Details:
+                    </p>
+                    <div className="space-y-3">
+                      {[
+                        "Name",
+                        "Address",
+                        "City",
+                        "State",
+                        "PIN",
+                        "Phone",
+                        "PAN",
+                      ].map((label, index) => (
+                        <div key={index}>
+                          <p className="mb-1 text-xs font-medium text-gray-600">
+                            {label}
+                          </p>
+                          <input
+                            type="text"
+                            className="w-full rounded border border-gray-200 p-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                          />
+                        </div>
+                      ))}
+                      <p className="mt-4 text-xs text-gray-500">
+                        If TDS Certificate is to be issued to the lorry owner,
+                        the above-mentioned address will be used.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Sanatan Loading Supervisor Details */}
+                  <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <p className="mb-3 text-sm font-semibold text-gray-800">
+                      Sanatan Loading Supervisor Details:
+                    </p>
+                    <div className="space-y-3">
+                      {["Name", "Employee Code", "Signature"].map(
+                        (label, index) => (
+                          <div key={index}>
+                            <p className="mb-1 text-xs font-medium text-gray-600">
+                              {label}
+                            </p>
+                            <input
+                              type="text"
+                              className="w-full rounded border border-gray-200 p-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                            />
+                          </div>
+                        ),
+                      )}
+                      {/* Advance Transferred In */}
+                      <div className=" rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                        <p className="mb-3 text-sm font-semibold text-gray-800">
+                          Advance Transferred In:
+                        </p>
+                        <div className="space-y-3">
+                          {["Owner's Account", "Driver's Account"].map(
+                            (label, index) => (
+                              <div key={index} className="flex items-center">
+                                <input
+                                  type="checkbox"
+                                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-200"
+                                />
+                                <p className="ml-2 text-xs font-medium text-gray-600">
+                                  {label}
+                                </p>
+                              </div>
+                            ),
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Footer Section */}

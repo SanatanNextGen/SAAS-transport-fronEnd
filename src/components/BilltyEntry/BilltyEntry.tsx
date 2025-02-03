@@ -8,8 +8,10 @@ interface Row {
   credit?: string;
 }
 
-const FormPage: React.FC = () => {
+const BilltyEntry: React.FC = () => {
   const [Data, setData] = useState<any[]>([]);
+  console.log("dddd", Data);
+
   const [selectedData, setSelectedData] = useState<any[]>([]); // Array to store selected bilties
   const [rows, setRows] = useState<Row[]>([{}]); // Explicit type for rows
   const [isOpen, setIsOpen] = useState(false);
@@ -30,9 +32,7 @@ const FormPage: React.FC = () => {
     fetchData();
   }, []);
 
-
-  
-  const selectBuilty = () => {
+  const selectbillty = () => {
     setIsOpen(!isOpen);
   };
 
@@ -40,10 +40,10 @@ const FormPage: React.FC = () => {
   const handleCheckboxChange = (id: string) => {
     setSelectedData((prevSelectedData) => {
       if (prevSelectedData.some((selected) => selected.id === id)) {
-        return prevSelectedData.filter((bilty) => bilty.id !== id); // Remove if already selected
+        return prevSelectedData.filter((billty) => billty.id !== id); // Remove if already selected
       } else {
-        const selectedBilty = Data.find((bilty) => bilty.id === id);
-        return [...prevSelectedData, selectedBilty]; // Add if not selected
+        const selectedbillty = Data.find((billty) => billty.id === id);
+        return [...prevSelectedData, selectedbillty]; // Add if not selected
       }
     });
   };
@@ -79,33 +79,33 @@ const FormPage: React.FC = () => {
     <>
       <div className="mb-6 flex flex-col items-center text-center">
         <button
-          onClick={selectBuilty}
+          onClick={selectbillty}
           className="hover:bg-primary-dark rounded-lg bg-primary px-6 py-3 text-lg font-semibold text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
         >
-          Select the Order for creating Bilty
+          Select the Order for creating billty
         </button>
 
         {isOpen && (
           <div className="dark:bg-dark-bg mt-4 h-[35vw] w-full max-w-xs overflow-y-auto rounded-lg bg-white p-4 shadow-lg xl:h-[10vw]">
-            {Data.map((bilty) => (
+            {Data.map((billty) => (
               <div
-                key={bilty.id}
+                key={billty.id}
                 className=" mb-3 flex items-center space-x-3 "
               >
                 <input
                   type="checkbox"
-                  id={`bilty-${bilty.id}`}
+                  id={`billty-${billty.id}`}
                   checked={selectedData.some(
-                    (selected) => selected.id === bilty.id,
+                    (selected) => selected.id === billty.id,
                   )}
-                  onChange={() => handleCheckboxChange(bilty.id)}
+                  onChange={() => handleCheckboxChange(billty.id)}
                   className="h-5 w-5 rounded-md text-primary focus:ring-2 focus:ring-primary dark:text-secondary dark:focus:ring-secondary"
                 />
                 <label
-                  htmlFor={`bilty-${bilty.id}`}
+                  htmlFor={`billty-${billty.id}`}
                   className="font-medium text-black "
                 >
-                  {bilty.biltyNo}
+                  {billty.billtyNo}
                 </label>
               </div>
             ))}
@@ -476,26 +476,42 @@ const FormPage: React.FC = () => {
                             />
                           </div>
 
-                          <div className="flex gap-5">
-                            <input
-                              type="checkbox"
-                              id="totalFreight"
-                              className="h-5 w-5"
-                            />
+                          <div className="flex justify-between">
                             <label className="font-semibold">
-                              Total Freight:
+                              TotalFreight:
                             </label>
+                            <input
+                              type="text"
+                              className=" border border-gray-300 p-1 text-center"
+                              placeholder=""
+                            />
                           </div>
 
-                          <div className="flex gap-5">
+                          <div className="mt-5 flex gap-5">
                             <input
                               type="checkbox"
-                              id="toBeBilled"
+                              id="rcm"
                               className="h-5 w-5"
                             />
-                            <label className="font-semibold">
-                              To Be Billed:
-                            </label>
+                            <label className="font-semibold">RCM:</label>
+                          </div>
+
+                          <div className=" flex gap-5">
+                            <input
+                              type="checkbox"
+                              id="fcm"
+                              className="h-5 w-5"
+                            />
+                            <label className="font-semibold">FCM:</label>
+                          </div>
+
+                          <div className=" flex gap-5">
+                            <input
+                              type="checkbox"
+                              id="tbb"
+                              className="h-5 w-5"
+                            />
+                            <label className="font-semibold">TBB:</label>
                           </div>
 
                           <div className="flex gap-5">
@@ -505,6 +521,15 @@ const FormPage: React.FC = () => {
                               className="h-5 w-5"
                             />
                             <label className="font-semibold">To Pay:</label>
+                          </div>
+
+                          <div className="flex gap-5">
+                            <input
+                              type="checkbox"
+                              id="paid"
+                              className="h-5 w-5"
+                            />
+                            <label className="font-semibold">Paid:</label>
                           </div>
                         </div>
                       </td>
@@ -561,7 +586,7 @@ const FormPage: React.FC = () => {
                             />
                           </div>
 
-                          <div className="flex justify-between">
+                          <div className="mt-4 flex justify-between">
                             <label className="font-semibold">
                               GST Payable by Tick the relevant box :
                             </label>
@@ -648,4 +673,4 @@ const FormPage: React.FC = () => {
   );
 };
 
-export default FormPage;
+export default BilltyEntry;

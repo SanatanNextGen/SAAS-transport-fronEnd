@@ -6,248 +6,236 @@ import Modal from "../Modal/Modal";
 
 const VehicleManagement = () => {
   const ownData = {
-    Alias: "",
-    TruckNo: "",
-    Make: "",
-    EngineNo: "",
-    ChassisNo: "",
-    Model: "",
-    YearOfManufacture: "",
-    RTO: {
-      RTO_No: "",
-      RTO_Date: "",
+    Owner: {
+      Number: "", // Owner's contact number
+      OwnerName: "",
+      OwnerMobileNo: "",
+      OwnerPANNo: "",
     },
+
+    Vehicle: {
+      Make: "",
+      EngineNo: "",
+      ChassisNo: "",
+      Model: "",
+      YearOfManufacture: "",
+    },
+
     Fitness: {
       FitnessNo: "",
       FitnessDate: "",
+      FitnessExpiryDate: "",
     },
-    PUC: {
-      PUC_No: "",
-      PUC_Date: "",
-    },
-    TruckOwner: {
-      Name: "",
-      MobileNo: "",
-      PANNo: "",
-    },
-    OtherDetails: {
-      PermitNo: "",
-      PermitDate: "",
-      InsuranceNo: "",
-      InsuranceFrom: "",
-      InsuranceCompany: "",
-      InsuranceValidity: "",
-      InsuranceCharge: 0,
-      ShowRoadTaxDetails: "Yes",
 
-      VehicleType: "",
-      Address: "",
-      Remark: "",
-      DriverName: "",
-      RegdNo: "",
-      AdharCardNo: "",
-
-      DLNo: "",
-      InsuranceCopy: "",
-    },
-    Documents: {
-      RCDocument: "",
-      drivingLicense: "",
-      PUCDocument: "",
-      PANDocument: "",
-      TDSDocument: "",
-      TruckPicture: "",
-      PermitDocument: "",
-      InsuranceCopy: "",
-    },
-    RoadTaxDetails: {
+    RoadTax: {
       StartDate: "",
       EndDate: "",
-      NextDue: "",
-      RoadTaxAmount: 0,
-      TransferTo: "",
-      TransferDate: "",
-      BankName: "",
-      Remarks: "",
     },
-    TyreDetails: [
+
+    Permit: {
+      PermitNo: "",
+      ValidUpto: "",
+    },
+
+    FiveYearPermit: {
+      PermitNo: "",
+      ValidUpto: "",
+    },
+
+    Insurance: {
+      PolicyNo: "",
+      ValidFrom: "",
+      ValidUpto: "",
+    },
+
+    PUC: {
+      PUCNo: "",
+      PUCFromDate: "",
+      PUCToDate: "",
+    },
+
+    Documents: {
+      RCDocument: "",
+      FitnessDocument: "",
+      RoadTaxDocument: "",
+      NationalPermitDocument: "",
+      FiveYearPermitDocument: "",
+      InsuranceCopy: "",
+      PUCDocument: "",
+      DrivingLicense: "",
+    },
+
+    Tyre: [
       {
+        TyreBillNo: "",
+        TyreBillDate: "",
+        TyreDealerName: "",
+        TyreRate: "",
+        TyreMakers: "",
+        TyreWarranty: "",
         TyreNo: "",
+        TyreModel: "", // "New", "Old", or "Resole"
         TyreType: "", // "New", "Old", or "Resole"
-        Makers: "",
-        FrontRear: "", // "Front" or "Rear"
-        FittedOn: "",
-        BillNo: "",
-        BillDate: "",
-        StartKm: 0,
-        EndKm: 0, // End Km (of Previous Tyre)
+        TyreFrontRear: "", // "Front" or "Rear"
+        TyreFittedOnDate: "",
+        TyreRemovedOnDate: "",
+        TyreStartKm: 0,
+        TyreEndKm: 0, // End Km (of Previous Tyre)
       },
     ],
+
+    Battery: {
+      BatteryBillNo: "",
+      BatteryBillDate: "",
+      BatteryDealerName: "",
+      BatteryMakers: "",
+      BatteryWarranty: "",
+      BatteryWarrantyExpiryDate: "",
+    },
   };
 
   const hiredData = {
-    Alias: "",
-    TruckNo: "",
-    Make: "",
-    EngineNo: "",
-    ChassisNo: "",
-    Model: "",
-    YearOfManufacture: "",
-    RTO: {
-      RTO_No: "",
-      RTO_Date: "",
-    },
-    VehicleType: "",
-    Address: "",
-    Remark: "",
-    DriverDetails: {
-      Name: "",
-      RegdNo: "",
-      AdharCardNo: "",
-      DLNo: "",
-      InsuranceCopy: "",
-    },
-    PUCDetails: {
-      PUCNo: "",
-      ValidUpto: "",
-    },
-    InsuranceDetails: {
-      InsuranceNo: "",
-      ValidUpto: "",
-    },
-    PermitDetails: {
-      PermitNo: "",
-      ValidUpto: "",
-    },
-    TruckOwner: {
+    Owner: {
+      TruckNo: "",
       Name: "",
       MobileNo: "",
       PANNo: "",
+      AadharNo: "",
+      Address: "",
     },
+
+    Details: {
+      Make: "",
+      EngineNo: "",
+      ChassisNo: "",
+      Model: "",
+      YearOfManufacture: "",
+    },
+
+    Fitness: {
+      FitnessNo: "",
+      FitnessDate: "",
+      FitnessExpiryDate: "",
+    },
+
+    RoadTax: {
+      StartDate: "",
+      EndDate: "",
+    },
+
+    Permit: {
+      PermitNo: "",
+      ValidUpto: "",
+    },
+
+    FiveYearPermit: {
+      PermitNo: "",
+      ValidUpto: "",
+    },
+
+    Insurance: {
+      PolicyNo: "",
+      ValidFrom: "",
+      ValidUpto: "",
+    },
+
+    PUC: {
+      PUCNo: "",
+      PUCFromDate: "",
+      PUCToDate: "",
+    },
+
     Documents: {
       RCDocument: "",
-      drivingLicense: "",
-      PUCDocument: "",
-      PANDocument: "",
-      TDSDeclarationDocument: "",
-      TruckPicture: "",
-      PermitDocument: "",
+      FitnessDocument: "",
+      RoadTaxDocument: "",
+      NationalPermitDocument: "",
+      FiveYearPermitDocument: "",
       InsuranceCopy: "",
+      PUCDocument: "",
+      DrivingLicense: "",
     },
   };
 
   const downloadCSV = () => {
-    const csvRows = [];
-    const headers = [
-      "Truck Number",
-      "Make",
-      "Model",
-      "Year of Manufacture",
-      "Permit No",
-      "Permit Date",
-      "Insurance No",
-      "Insurance From",
-      "Insurance Validity",
-      "Insurance Company",
-      "Insurance Charge",
-      "RTO No",
-      "RTO Date",
-      "Fitness No",
-      "Fitness Date",
-      "PUC No",
-      "PUC Date",
-      "Vehicle Type",
-      "Address",
-      "Remark",
-      "Driver Name",
-      "Regd No",
-      "Adhar Card No",
-      "Truck Owner Name",
-      "Truck Owner Mobile No",
-      "Truck Owner PAN No",
-      "DL No",
-      "Insurance Copy",
-      "RC Document",
-      "PUC Document",
-      "PAN Document",
-      "TDS Document",
-      "Truck Picture",
-      "Permit Document",
-      "Insurance Copy",
-      "Road Tax Start Date",
-      "Road Tax End Date",
-      "Next Due",
-      "Road Tax Amount",
-      "Transfer To",
-      "Transfer Date",
-      "Bank Name",
-      "Remarks",
+  const csvRows = [];
+
+  // Define headers for CSV
+  const headers = [
+    "Truck Number", "Make", "Model", "Year of Manufacture", "Permit No",
+    "Permit Date", "Insurance No", "Insurance From", "Insurance Validity",
+    "Insurance Company", "Insurance Charge", "RTO No", "RTO Date", "Fitness No",
+    "Fitness Date", "PUC No", "PUC Date", "Vehicle Type", "Address", "Remark",
+    "Driver Name", "Regd No", "Adhar Card No", "Truck Owner Name", "Truck Owner Mobile No",
+    "Truck Owner PAN No", "DL No", "Insurance Copy", "RC Document", "PUC Document",
+    "PAN Document", "TDS Document", "Truck Picture", "Permit Document", "Insurance Copy",
+    "Road Tax Start Date", "Road Tax End Date", "Next Due", "Road Tax Amount",
+    "Transfer To", "Transfer Date", "Bank Name", "Remarks",
+  ];
+
+  csvRows.push(headers.join(","));
+
+  // Process each item in Data (assuming `Data` is an array of records)
+  Data.forEach((item) => {
+    const row = [
+      item?.TruckNo,
+      item?.Make,
+      item?.Model,
+      item?.YearOfManufacture,
+      item?.Permit?.PermitNo,
+      item?.Permit?.ValidUpto,
+      item?.Insurance?.PolicyNo,
+      item?.Insurance?.ValidFrom,
+      item?.Insurance?.ValidUpto,
+      item?.Insurance?.Company, // Assuming you have this data
+      item?.Insurance?.Charge, // Assuming you have this data
+      item?.RTO?.RTO_No,
+      item?.RTO?.RTO_Date,
+      item?.Fitness?.FitnessNo,
+      item?.Fitness?.FitnessDate,
+      item?.PUC?.PUCNo,
+      item?.PUC?.PUCDate,
+      item?.OtherDetails?.VehicleType,
+      item?.OtherDetails?.Address,
+      item?.OtherDetails?.Remark,
+      item?.OtherDetails?.DriverName,
+      item?.OtherDetails?.RegdNo,
+      item?.OtherDetails?.AadharCardNo,
+      item?.Owner?.OwnerName,
+      item?.Owner?.OwnerMobileNo,
+      item?.Owner?.OwnerPANNo,
+      item?.OtherDetails?.DLNo,
+      item?.Documents?.InsuranceCopy,
+      item?.Documents?.RCDocument,
+      item?.Documents?.PUCDocument,
+      item?.Documents?.PANDocument,
+      item?.Documents?.TDSDocument,
+      item?.Documents?.TruckPicture,
+      item?.Documents?.PermitDocument,
+      item?.RoadTax?.StartDate,
+      item?.RoadTax?.EndDate,
+      item?.RoadTax?.NextDue,
+      item?.RoadTax?.Amount, // Assuming this data exists
+      item?.RoadTax?.TransferTo,
+      item?.RoadTax?.TransferDate,
+      item?.RoadTax?.BankName,
+      item?.RoadTax?.Remarks,
     ];
-    csvRows.push(headers.join(","));
 
-    Data.forEach((item) => {
-      console.log("🚀 ~ Data.forEach ~ item:", item);
+    csvRows.push(row.join(","));
+  });
 
-      const row = [
-        item?.TruckNo,
-        item?.Make,
-        item?.Model,
-        item?.YearOfManufacture,
-        item?.PermitNo,
-        item?.PermitDate,
-        item?.InsuranceNo,
-        item?.InsuranceFrom,
-        item?.InsuranceValidity,
-        item?.InsuranceCompany,
-        item?.InsuranceCharge,
-        item?.RTO?.RTO_No, // Corrected reference
-        item?.RTO?.RTO_Date, // Corrected reference
-        item?.Fitness?.FitnessNo, // Corrected reference
-        item?.Fitness?.FitnessDate, // Corrected reference
-        item?.PUC?.PUC_No, // Corrected reference
-        item?.PUC?.PUC_Date, // Corrected reference
-        item?.OtherDetails?.VehicleType,
-        item?.OtherDetails?.Address,
-        item?.OtherDetails?.Remark,
-        item?.OtherDetails?.DriverName,
-        item?.OtherDetails?.RegdNo,
-        item?.OtherDetails?.AdharCardNo,
-        item?.TruckOwner?.Name,
-        item?.TruckOwner?.MobileNo,
-        item?.TruckOwner?.PANNo,
-        item?.OtherDetails?.DLNo,
-        item?.OtherDetails?.InsuranceCopy,
-        item?.Documents?.RCDocument,
-        item?.Documents?.PUCDocument,
-        item?.Documents?.PANDocument,
-        item?.Documents?.TDSDocument,
-        item?.Documents?.TruckPicture,
-        item?.Documents?.PermitDocument,
-        item?.Documents?.InsuranceCopy,
-        item?.RoadTaxDetails?.StartDate,
-        item?.RoadTaxDetails?.EndDate,
-        item?.RoadTaxDetails?.NextDue,
-        item?.RoadTaxDetails?.RoadTaxAmount,
-        item?.RoadTaxDetails?.TransferTo,
-        item?.RoadTaxDetails?.TransferDate,
-        item?.RoadTaxDetails?.BankName,
-        item?.RoadTaxDetails?.Remarks,
-      ];
+  // Convert to CSV and trigger download
+  const csvString = csvRows.join("\n");
+  const blob = new Blob([csvString], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.setAttribute("href", url);
+  a.setAttribute("download", "truck_records.csv");
+  a.click();
+  URL.revokeObjectURL(url);
+};
 
-      csvRows.push(row.join(","));
-    });
-
-    console.log(csvRows);
-
-    const csvString = csvRows.join("\n");
-    const blob = new Blob([csvString], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.setAttribute("href", url);
-    a.setAttribute("download", "truck_records.csv");
-    a.click();
-    URL.revokeObjectURL(url);
-  };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [VehicleType, setVehicleType] = useState("");
@@ -358,7 +346,7 @@ const VehicleManagement = () => {
         fields.push({
           id: fieldName,
           name: fieldName,
-          placeholder: `Enter ${key.replace(/([A-Z])/g, " $1").toLowerCase()}`, // Dynamically set the placeholder
+          placeholder: `Vehicle ${key.replace(/([A-Z])/g, " $1").toLowerCase()}`, // Dynamically set the placeholder
           type: getFieldType(value), // Dynamically determine the input type
           value: value, // Format date fields to match input date format
         });
@@ -539,27 +527,22 @@ const VehicleManagement = () => {
                         value = customer[header];
                       }
 
-                      if (
-                        header === "TyreDetails" &&
-                        Array.isArray(customer.TyreDetails)
-                      ) {
+                      if (header === "Tyre" && Array.isArray(customer.Tyre)) {
                         return (
                           <td
                             key={header}
-                            className="border border-gray-200 px-4 py-2"
+                            className="border  border-gray-200 px-4 py-2"
                           >
                             <table className="w-full table-auto">
                               <thead>
                                 <tr>
-                                  {Object.keys(customer.TyreDetails[0]).map(
-                                    (key) => (
-                                      <th key={key}>{key}</th>
-                                    ),
-                                  )}
+                                  {Object.keys(customer.Tyre[0]).map((key) => (
+                                    <th key={key}>{key}</th>
+                                  ))}
                                 </tr>
                               </thead>
                               <tbody>
-                                {customer.TyreDetails.map(
+                                {customer.Tyre.map(
                                   (tyre: any, tyreIndex: any) => (
                                     <tr key={tyreIndex}>
                                       {Object.keys(tyre).map((key) => (
@@ -587,12 +570,12 @@ const VehicleManagement = () => {
                           </td>
                         );
                       }
-                      
+
                       if (typeof value === "object" && value !== null) {
                         return (
                           <td
                             key={header}
-                            className="border border-gray-200 px-4 py-2"
+                            className="border  border-gray-200 px-4 py-2"
                           >
                             <table className="w-full table-auto">
                               <thead>

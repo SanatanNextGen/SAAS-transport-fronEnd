@@ -5,7 +5,6 @@ import FormModal from "../FormModal/FormModal";
 
 const VehicleManagement = () => {
   const defaultData = {
-    id: "",
     partyName: "",
     fromStation: "",
     toStation: "",

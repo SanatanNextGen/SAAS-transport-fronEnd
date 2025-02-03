@@ -30,7 +30,7 @@ const FormPage: React.FC = () => {
     fetchData();
   }, []);
 
-  const selectBuilty = () => {
+  const selectbillty = () => {
     setIsOpen(!isOpen);
   };
 
@@ -38,10 +38,10 @@ const FormPage: React.FC = () => {
   const handleCheckboxChange = (id: string) => {
     setSelectedData((prevSelectedData) => {
       if (prevSelectedData.some((selected) => selected.id === id)) {
-        return prevSelectedData.filter((bilty) => bilty.id !== id); // Remove if already selected
+        return prevSelectedData.filter((billty) => billty.id !== id); // Remove if already selected
       } else {
-        const selectedBilty = Data.find((bilty) => bilty.id === id);
-        return [...prevSelectedData, selectedBilty]; // Add if not selected
+        const selectedbillty = Data.find((billty) => billty.id === id);
+        return [...prevSelectedData, selectedbillty]; // Add if not selected
       }
     });
   };
@@ -77,7 +77,7 @@ const FormPage: React.FC = () => {
     <>
       <div className="mb-6 flex flex-col items-center text-center">
         <button
-          onClick={selectBuilty}
+          onClick={selectbillty}
           className="hover:bg-primary-dark rounded-lg bg-primary px-6 py-3 text-lg font-semibold text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
         >
           Select the Challan for creating Advance Payment Voucher
@@ -85,25 +85,25 @@ const FormPage: React.FC = () => {
 
         {isOpen && (
           <div className="dark:bg-dark-bg mt-4 h-[35vw] w-full max-w-xs overflow-y-auto rounded-lg bg-white p-4 shadow-lg xl:h-[10vw]">
-            {Data.map((bilty) => (
+            {Data.map((billty) => (
               <div
-                key={bilty.id}
+                key={billty.id}
                 className=" mb-3 flex items-center space-x-3 "
               >
                 <input
                   type="checkbox"
-                  id={`bilty-${bilty.id}`}
+                  id={`billty-${billty.id}`}
                   checked={selectedData.some(
-                    (selected) => selected.id === bilty.id,
+                    (selected) => selected.id === billty.id,
                   )}
-                  onChange={() => handleCheckboxChange(bilty.id)}
+                  onChange={() => handleCheckboxChange(billty.id)}
                   className="h-5 w-5 rounded-md text-primary focus:ring-2 focus:ring-primary dark:text-secondary dark:focus:ring-secondary"
                 />
                 <label
-                  htmlFor={`bilty-${bilty.id}`}
+                  htmlFor={`billty-${billty.id}`}
                   className="font-medium text-black "
                 >
-                  {bilty.biltyNo}
+                  {billty.billtyNo}
                 </label>
               </div>
             ))}
@@ -155,8 +155,8 @@ const FormPage: React.FC = () => {
                     </label>
                     <div className="my-4 border-b-2 border-gray-300"></div>
                   </div>
-                  {selectedData.map((bilty, index) => (
-                    <div key={bilty.id} className="grid gap-6 sm:grid-cols-2">
+                  {selectedData.map((billty, index) => (
+                    <div key={billty.id} className="grid gap-6 sm:grid-cols-2">
                       <div className="flex flex-col">
                         <label className="font-semibold text-gray-700">
                           Name:
@@ -195,14 +195,14 @@ const FormPage: React.FC = () => {
                       />
                       <div className="my-4 border-b-2 border-gray-300"></div>
                     </div>
-                    {selectedData.map((bilty, index) => (
-                      <div key={bilty.id} className="flex flex-col space-y-4">
+                    {selectedData.map((billty, index) => (
+                      <div key={billty.id} className="flex flex-col space-y-4">
                         <label className="font-semibold text-gray-700">
                           Vehicle No:
                         </label>
                         <input
                           type="text"
-                          value={bilty ? bilty.shipmentDetails.vehicleNo : ""}
+                          value={billty ? billty.shipmentDetails.vehicleNo : ""}
                           onChange={(e) =>
                             handleInputChange(
                               index,
@@ -225,23 +225,23 @@ const FormPage: React.FC = () => {
                   <thead className="bg-blue-100">
                     <tr>
                       <th className="p-4">Challan No</th>
-                      <th className="p-4">Bilty No</th>
-                      <th className="p-4">Bilty Date</th>
+                      <th className="p-4">billty No</th>
+                      <th className="p-4">billty Date</th>
                       <th className="p-4">Vehicle No</th>
                       <th className="p-4">Advance Amount</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {selectedData.map((bilty) => (
+                    {selectedData.map((billty) => (
                       <tr
-                        key={bilty.id}
+                        key={billty.id}
                         className="transition duration-200 hover:bg-gray-50"
                       >
-                        <td className="p-4">{bilty.id}</td>
-                        <td className="p-4">{bilty.biltyNo}</td>
-                        <td className="p-4">{bilty.biltyDate}</td>
+                        <td className="p-4">{billty.id}</td>
+                        <td className="p-4">{billty.billtyNo}</td>
+                        <td className="p-4">{billty.billtyDate}</td>
                         <td className="p-4">
-                          {bilty.shipmentDetails.vehicleNo}
+                          {billty.shipmentDetails.vehicleNo}
                         </td>
                         <td className="p-4">
                           <input placeholder="Enter the Advance Amount " />
@@ -336,7 +336,7 @@ const FormPage: React.FC = () => {
         </div>
       ) : (
         <div className="text-center text-gray-500">
-          Select Bilty(s) to view details.
+          Select billty(s) to view details.
         </div>
       )}
     </>

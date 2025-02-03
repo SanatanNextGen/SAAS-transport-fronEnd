@@ -8,10 +8,6 @@ const ConsigneeManagement = () => {
     id: "",
     firstName: " ",
     lastName: " ",
-    contact: {
-      email: "",
-      phone: "",
-    },
     address: {
       street: "",
       city: "",
@@ -19,6 +15,11 @@ const ConsigneeManagement = () => {
       zip: "",
     },
     gstin: "",
+    contact: {
+      email: "",
+      phone: "",
+    },
+
     bankDetails: {
       accountNumber: "",
       ifscCode: "",
@@ -318,7 +319,7 @@ const ConsigneeManagement = () => {
       {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Vehicle"}
+          title={"Add New Consignee"}
           onClose={handleCloseModal}
           fields={transformToFields(defaultData)}
           onSubmit={handleSubmit}
@@ -326,7 +327,7 @@ const ConsigneeManagement = () => {
       )}
       {isEditModalOpen && selectedData && (
         <FormModal
-          title={"Edit Vehicle"}
+          title={"Edit Consignee"}
           onClose={handleCloseModal}
           fields={transformToFields(selectedData)}
           onSubmit={handleSubmit}

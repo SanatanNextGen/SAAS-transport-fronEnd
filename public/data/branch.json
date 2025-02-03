@@ -2,8 +2,8 @@
   {
     "id": "B001",
     "branchName": "Main Branch",
-    "builtyNumberFrom": "0001",
-    "builtyNumberTo": "1000",
+    "billtyNumberFrom": "0001",
+    "billtyNumberTo": "1000",
     "address": "123 Main St, Springfield, IL, 62701, USA",
     "branch contact": "123-456-7890 ",
     "branch email": " branchmain@example.com",
@@ -17,8 +17,8 @@
   {
     "id": "B002",
     "branchName": "Main Branch",
-    "builtyNumberFrom": "0001",
-    "builtyNumberTo": "1000",
+    "billtyNumberFrom": "0001",
+    "billtyNumberTo": "1000",
     "address": "123MainSt,Springfield,IL, 62701, USA",
     "branch contact": "1234567890 ",
     "branch email": " branchmain@example.com",

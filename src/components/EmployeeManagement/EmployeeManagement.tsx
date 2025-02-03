@@ -5,7 +5,6 @@ import FormModal from "../FormModal/FormModal";
 
 const EmployeeManagement = () => {
   const defaultData = {
-    id: "",
     firstName: " ",
     lastName: "",
     dob: "",
@@ -46,6 +45,7 @@ const EmployeeManagement = () => {
       employmentStatus: "",
       lastChecked: "",
     },
+    performance: "",
 
     Documents: {
       Documents: "",
@@ -355,7 +355,7 @@ const EmployeeManagement = () => {
       {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Vehicle"}
+          title={"Add New Employee"}
           onClose={handleCloseModal}
           fields={transformToFields(defaultData)}
           onSubmit={handleSubmit}
@@ -363,7 +363,7 @@ const EmployeeManagement = () => {
       )}
       {isEditModalOpen && selectedData && (
         <FormModal
-          title={"Edit Vehicle"}
+          title={"Edit Employee"}
           onClose={handleCloseModal}
           fields={transformToFields(selectedData)}
           onSubmit={handleSubmit}

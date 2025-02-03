@@ -5,30 +5,33 @@ import FormModal from "../FormModal/FormModal";
 
 const BrokerManagement = () => {
   const defaultData = {
-    id: "",
-    firstName: " ",
-    lastName: " ",
-    contact: {
-      email: "",
-      phone: "",
-    },
+    firmName: " ",
+    firmType: " ",
+    firmPANNumber: "",
+    adharNumber: "",
+    gstin: "",
+    OwnerFirstName: " ",
+    OwnerLastName: " ",
     address: {
       street: "",
       city: "",
       state: "",
       zip: "",
     },
-    gstin: "",
+    contact: {
+      email: "",
+      phone: "",
+    },
     bankDetails: {
       accountNumber: "",
       ifscCode: "",
       bankName: "",
     },
     Documents: {
-      Documents: "",
+      PANCard: "",
+      AdharCard: "",
+      visitingCard: "",
     },
-    createdAt: "",
-    updatedAt: "",
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,7 +51,6 @@ const BrokerManagement = () => {
   }, []);
 
   const handleSubmit = (updatedData: any) => {
-
     // Update the Data state with the edited data
     const updatedDatas = Data.map((data) =>
       data.id === updatedData.id ? updatedData : data,
@@ -322,7 +324,7 @@ const BrokerManagement = () => {
       {/* Modal Rendering */}
       {isModalOpen && (
         <FormModal
-          title={"Add New Vehicle"}
+          title={"Add New Broker"}
           onClose={handleCloseModal}
           fields={transformToFields(defaultData)}
           onSubmit={handleSubmit}
@@ -330,7 +332,7 @@ const BrokerManagement = () => {
       )}
       {isEditModalOpen && selectedData && (
         <FormModal
-          title={"Edit Vehicle"}
+          title={"Edit Broker"}
           onClose={handleCloseModal}
           fields={transformToFields(selectedData)}
           onSubmit={handleSubmit}

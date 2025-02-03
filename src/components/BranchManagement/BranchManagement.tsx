@@ -5,10 +5,7 @@ import FormModal from "../FormModal/FormModal";
 
 const BranchManagement = () => {
   const defaultData = {
-    branchId: "",
     branchName: " ",
-    builtyNumberFrom: "",
-    builtyNumberTo: "",
     address: {
       street: "",
       city: "",
@@ -24,9 +21,6 @@ const BranchManagement = () => {
       managerName: " ",
       managerContact: "",
       managerPhone: "",
-    },
-    Documents: {
-      Documents: "",
     },
   };
 
@@ -122,8 +116,8 @@ const BranchManagement = () => {
     const headers = [
       "Id",
       "Branch Name",
-      "Builty Number From",
-      "Builty Number To",
+      "billty Number From",
+      "billty Number To",
       "Street",
       "City",
       "State",
@@ -141,8 +135,8 @@ const BranchManagement = () => {
       const row = [
         item.id,
         item.branchName,
-        item.builtyNumberFrom,
-        item.builtyNumberTo,
+        item.billtyNumberFrom,
+        item.billtyNumberTo,
         item.address.street,
         item.address.city,
         item.address.state,

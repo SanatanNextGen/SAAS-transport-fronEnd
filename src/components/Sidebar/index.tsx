@@ -104,8 +104,8 @@ const menuGroups = [
         children: [
           {
             id: 5,
-            label: "Builty Entry",
-            route: "/builtyEntry",
+            label: "Billty Entry",
+            route: "/billtyEntry",
           },
         ],
       },

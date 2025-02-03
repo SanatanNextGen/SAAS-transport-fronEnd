@@ -1,132 +1,213 @@
 [
   {
     "vehicleType": "Owned",
-    "Alias": "Truck1",
-    "TruckNo": "ABC1234",
-    "Make": "Volvo",
-    "EngineNo": "EN123456789",
-    "ChassisNo": "CH123456789",
-    "Model": "FMX",
-    "YearOfManufacture": "2020",
-    "RTO": {
-      "RTO_No": "RTO123",
-      "RTO_Date": "2020-08-15"
+    "truckNo": "ABC1234",
+    "make": "Volvo",
+    "engineNo": "EN123456789",
+    "chassisNo": "CH123456789",
+    "model": "FMX",
+    "yearOfManufacture": "2020",
+    "rto": {
+      "rtoNo": "RTO123",
+      "rtoDate": "2020-08-15"
     },
-    "Fitness": {
-      "FitnessNo": "FIT123",
-      "FitnessDate": "2020-09-01"
+    "fitness": {
+      "fitnessNo": "FIT123",
+      "fitnessDate": "2020-09-01",
+      "fitnessExpiryDate": "2025-09-01"
     },
-    "PUC": {
-      "PUC_No": "PUC123",
-      "PUC_Date": "2024-01-01"
+    "puc": {
+      "pucNo": "PUC123",
+      "pucDate": "2024-01-01"
     },
-    "TruckOwner": {
-      "Name": "John Doe",
-      "MobileNo": "+1234567890",
-      "PANNo": "ABCDE1234F"
+    "truckOwner": {
+      "name": "John Doe",
+      "mobileNo": "+1234567890",
+      "panNo": "ABCDE1234F"
     },
-    "OtherDetails": {
-      "PermitNo": "PMT123",
-      "PermitDate": "2020-09-10",
-      "InsuranceNo": "INS123456",
-      "InsuranceFrom": "2020-10-01",
-      "InsuranceCompany": "XYZ Insurance",
-      "InsuranceValidity": "2024-09-30",
-      "InsuranceCharge": 12000,
-      "ShowRoadTaxDetails": "Yes",
-      "VehicleType": "Heavy",
-      "Address": "123 Main Street, City",
-      "Remark": "Good condition",
-      "DriverName": "Mike Smith",
-      "RegdNo": "REG123456",
-      "AdharCardNo": "1234-5678-9012",
-      "DLNo": "DL123456789",
-      "InsuranceCopy": "INS_COPY.pdf"
+    "otherDetails": {
+      "permitNo": "PMT123",
+      "permitDate": "2020-09-10",
+      "insuranceNo": "INS123456",
+      "insuranceFrom": "2020-10-01",
+      "insuranceCompany": "XYZ Insurance",
+      "insuranceValidity": "2024-09-30",
+      "insuranceCharge": 12000,
+      "showRoadTaxDetails": "Yes",
+      "vehicleType": "Heavy",
+      "address": "123 Main Street, City",
+      "remark": "Good condition",
+      "driverName": "Mike Smith",
+      "regdNo": "REG123456",
+      "adharCardNo": "1234-5678-9012",
+      "dlNo": "DL123456789",
+      "insuranceCopy": "INS_COPY.pdf"
     },
-    "Documents": {
-      "RCDocument": "RC_DOC.pdf",
+    "documents": {
+      "rcDocument": "RC_DOC.pdf",
       "drivingLicense": "DL_COPY.pdf",
-      "PUCDocument": "PUC_DOC.pdf",
-      "PANDocument": "PAN_DOC.pdf",
-      "TDSDocument": "TDS_DOC.pdf",
-      "TruckPicture": "truck_picture.jpg",
-      "PermitDocument": "PERMIT_DOC.pdf",
-      "InsuranceCopy": "INSURANCE_COPY.pdf"
+      "pucDocument": "PUC_DOC.pdf",
+      "panDocument": "PAN_DOC.pdf",
+      "tdsDocument": "TDS_DOC.pdf",
+      "truckPicture": "truck_picture.jpg",
+      "permitDocument": "PERMIT_DOC.pdf",
+      "insuranceCopy": "INSURANCE_COPY.pdf"
     },
-    "RoadTaxDetails": {
-      "StartDate": "2020-08-01",
-      "EndDate": "2021-07-31",
-      "NextDue": "2021-08-01",
-      "RoadTaxAmount": 5000,
-      "TransferTo": "XYZ Road Tax Authority",
-      "TransferDate": "2020-08-05",
-      "BankName": "XYZ Bank",
-      "Remarks": "Paid on time"
+    "roadTaxDetails": {
+      "startDate": "2020-08-01",
+      "endDate": "2021-07-31",
+      "nextDue": "2021-08-01",
+      "roadTaxAmount": 5000,
+      "transferTo": "XYZ Road Tax Authority",
+      "transferDate": "2020-08-05",
+      "bankName": "XYZ Bank",
+      "remarks": "Paid on time"
     },
-    "TyreDetails": [
+    "tyreDetails": [
       {
-        "TyreNo": "TYRE001",
-        "TyreType": "New",
-        "Makers": "Michelin",
-        "FrontRear": "Front",
-        "FittedOn": "2020-09-15",
-        "BillNo": "BILL123",
-        "BillDate": "2020-09-15",
-        "StartKm": 0,
-        "EndKm": 5000
+        "tyreNo": "TYRE001",
+        "tyreType": "New",
+        "makers": "Michelin",
+        "frontRear": "Front",
+        "fittedOn": "2020-09-15",
+        "billNo": "BILL123",
+        "billDate": "2020-09-15",
+        "startKm": 0,
+        "endKm": 5000
       }
-     
     ]
   },
   {
     "vehicleType": "Hired",
-    "Alias": "Truck2",
-    "TruckNo": "XYZ9876",
-    "Make": "Tata",
-    "EngineNo": "EN987654321",
-    "ChassisNo": "CH987654321",
-    "Model": "LPT",
-    "YearOfManufacture": "2018",
-    "RTO": {
-      "RTO_No": "RTO456",
-      "RTO_Date": "2018-05-20"
+    "truckNo": "XYZ9876",
+    "make": "Tata",
+    "engineNo": "EN987654321",
+    "chassisNo": "CH987654321",
+    "model": "LPT",
+    "yearOfManufacture": "2018",
+    "rto": {
+      "rtoNo": "RTO456",
+      "rtoDate": "2018-05-20"
     },
-    "VehicleType": "Medium",
-    "Address": "456 Another Street, City",
-    "Remark": "Needs repair",
-    "DriverDetails": {
-      "Name": "Sarah Lee",
-      "RegdNo": "DL1234567",
-      "AdharCardNo": "9876-5432-1098",
-      "DLNo": "DL987654321",
-      "InsuranceCopy": "Hired_Insurance_Copy.pdf"
+    "fitness": {
+      "fitnessNo": "FIT456",
+      "fitnessDate": "2018-06-10",
+      "fitnessExpiryDate": "2023-06-10"
     },
-    "PUCDetails": {
-      "PUCNo": "PUC456",
-      "ValidUpto": "2025-01-01"
+    "puc": {
+      "pucNo": "PUC789",
+      "pucDate": "2024-06-01"
     },
-    "InsuranceDetails": {
-      "InsuranceNo": "INS987654",
-      "ValidUpto": "2024-12-31"
+    "truckOwner": {
+      "name": "David Miller",
+      "mobileNo": "+9876543210",
+      "panNo": "XYZAB1234C"
     },
-    "PermitDetails": {
-      "PermitNo": "PMT456",
-      "ValidUpto": "2023-11-01"
+    "otherDetails": {
+      "permitNo": "PMT456",
+      "permitDate": "2023-11-01",
+      "insuranceNo": "INS987654",
+      "insuranceFrom": "2020-06-01",
+      "insuranceCompany": "ABC Insurance",
+      "insuranceValidity": "2024-06-01",
+      "insuranceCharge": 15000,
+      "showRoadTaxDetails": "No",
+      "vehicleType": "Medium",
+      "address": "456 Another Street, City",
+      "remark": "Needs repair",
+      "driverName": "Sarah Lee",
+      "regdNo": "DL1234567",
+      "adharCardNo": "9876-5432-1098",
+      "dlNo": "DL987654321",
+      "insuranceCopy": "Hired_Insurance_Copy.pdf"
     },
-    "TruckOwner": {
-      "Name": "David Miller",
-      "MobileNo": "+9876543210",
-      "PANNo": "XYZAB1234C"
-    },
-    "Documents": {
-      "RCDocument": "Hired_RC_DOC.pdf",
+    "documents": {
+      "rcDocument": "Hired_RC_DOC.pdf",
       "drivingLicense": "Hired_DL_COPY.pdf",
-      "PUCDocument": "Hired_PUC_DOC.pdf",
-      "PANDocument": "Hired_PAN_DOC.pdf",
-      "TDSDeclarationDocument": "Hired_TDS_DOC.pdf",
-      "TruckPicture": "hired_truck_picture.jpg",
-      "PermitDocument": "Hired_PERMIT_DOC.pdf",
-      "InsuranceCopy": "Hired_INSURANCE_COPY.pdf"
+      "pucDocument": "Hired_PUC_DOC.pdf",
+      "panDocument": "Hired_PAN_DOC.pdf",
+      "tdsDeclarationDocument": "Hired_TDS_DOC.pdf",
+      "truckPicture": "hired_truck_picture.jpg",
+      "permitDocument": "Hired_PERMIT_DOC.pdf",
+      "insuranceCopy": "Hired_INSURANCE_COPY.pdf"
     }
+  },
+  {
+    "vehicleType": "Owned",
+    "truckNo": "XYZ1234",
+    "make": "Mercedes",
+    "engineNo": "EN1234567890",
+    "chassisNo": "CH1234567890",
+    "model": "Atego",
+    "yearOfManufacture": "2021",
+    "rto": {
+      "rtoNo": "RTO789",
+      "rtoDate": "2021-07-15"
+    },
+    "fitness": {
+      "fitnessNo": "FIT789",
+      "fitnessDate": "2021-08-01",
+      "fitnessExpiryDate": "2026-08-01"
+    },
+    "puc": {
+      "pucNo": "PUC101",
+      "pucDate": "2025-01-01"
+    },
+    "truckOwner": {
+      "name": "Alice Brown",
+      "mobileNo": "+1122334455",
+      "panNo": "ABCDE6789G"
+    },
+    "otherDetails": {
+      "permitNo": "PMT789",
+      "permitDate": "2021-08-10",
+      "insuranceNo": "INS456789",
+      "insuranceFrom": "2021-09-01",
+      "insuranceCompany": "ABC Insurance",
+      "insuranceValidity": "2025-09-01",
+      "insuranceCharge": 16000,
+      "showRoadTaxDetails": "Yes",
+      "vehicleType": "Heavy",
+      "address": "789 Business Blvd, City",
+      "remark": "Excellent condition",
+      "driverName": "James Taylor",
+      "regdNo": "REG789012",
+      "adharCardNo": "3456-7890-1234",
+      "dlNo": "DL456789012",
+      "insuranceCopy": "Insurance_Copy_2021.pdf"
+    },
+    "documents": {
+      "rcDocument": "RC_Document_2021.pdf",
+      "drivingLicense": "DL_Copy_2021.pdf",
+      "pucDocument": "PUC_Document_2021.pdf",
+      "panDocument": "PAN_Document_2021.pdf",
+      "tdsDocument": "TDS_Document_2021.pdf",
+      "truckPicture": "truck_picture_2021.jpg",
+      "permitDocument": "Permit_Document_2021.pdf",
+      "insuranceCopy": "Insurance_Copy_2021.pdf"
+    },
+    "roadTaxDetails": {
+      "startDate": "2021-08-01",
+      "endDate": "2022-07-31",
+      "nextDue": "2022-08-01",
+      "roadTaxAmount": 6000,
+      "transferTo": "ABC Road Tax Authority",
+      "transferDate": "2021-08-05",
+      "bankName": "ABC Bank",
+      "remarks": "Paid on time"
+    },
+    "tyreDetails": [
+      {
+        "tyreNo": "TYRE002",
+        "tyreType": "New",
+        "makers": "Bridgestone",
+        "frontRear": "Rear",
+        "fittedOn": "2021-09-15",
+        "billNo": "BILL456",
+        "billDate": "2021-09-15",
+        "startKm": 0,
+        "endKm": 4000
+      }
+    ]
   }
 ]

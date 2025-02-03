@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "biltyNo": "BLT-001",
+    "billtyNo": "BLT-001",
     "consignorName": "ABC Transport",
     "consigneeName": "XYZ Logistics",
     "fromStation": "New York",
@@ -13,7 +13,7 @@
   },
   {
     "id": "2",
-    "biltyNo": "BLT-002",
+    "billtyNo": "BLT-002",
     "consignorName": "Quick Cargo",
     "consigneeName": "Fast Movers",
     "fromStation": "Chicago",
@@ -25,7 +25,7 @@
   },
   {
     "id": "3",
-    "biltyNo": "BLT-003",
+    "billtyNo": "BLT-003",
     "consignorName": "Global Shipping",
     "consigneeName": "Sanatan Express",
     "fromStation": "Miami",
@@ -37,7 +37,7 @@
   },
   {
     "id": "4",
-    "biltyNo": "BLT-004",
+    "billtyNo": "BLT-004",
     "consignorName": "Indore Cargo",
     "consigneeName": "Dewas Logistics",
     "fromStation": "Seattle",
@@ -49,7 +49,7 @@
   },
   {
     "id": "5",
-    "biltyNo": "BLT-005",
+    "billtyNo": "BLT-005",
     "consignorName": "Express Movers",
     "consigneeName": "Quick Delivery",
     "fromStation": "Boston",

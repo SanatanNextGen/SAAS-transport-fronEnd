@@ -30,7 +30,7 @@ const FormPage: React.FC = () => {
     fetchData();
   }, []);
 
-  const selectBuilty = () => {
+  const selectbillty = () => {
     setIsOpen(!isOpen);
   };
 
@@ -38,10 +38,10 @@ const FormPage: React.FC = () => {
   const handleCheckboxChange = (id: string) => {
     setSelectedData((prevSelectedData) => {
       if (prevSelectedData.some((selected) => selected.id === id)) {
-        return prevSelectedData.filter((bilty) => bilty.id !== id); // Remove if already selected
+        return prevSelectedData.filter((billty) => billty.id !== id); // Remove if already selected
       } else {
-        const selectedBilty = Data.find((bilty) => bilty.id === id);
-        return [...prevSelectedData, selectedBilty]; // Add if not selected
+        const selectedbillty = Data.find((billty) => billty.id === id);
+        return [...prevSelectedData, selectedbillty]; // Add if not selected
       }
     });
   };
@@ -77,7 +77,7 @@ const FormPage: React.FC = () => {
     <>
       <div className="mb-6 flex flex-col items-center text-center">
         <button
-          onClick={selectBuilty}
+          onClick={selectbillty}
           className="hover:bg-primary-dark rounded-lg bg-primary px-6 py-3 text-lg font-semibold text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
         >
           Select the bill creationVoucher for Money receipt
@@ -85,25 +85,25 @@ const FormPage: React.FC = () => {
 
         {isOpen && (
           <div className="dark:bg-dark-bg mt-4 h-[35vw] w-full max-w-xs overflow-y-auto rounded-lg bg-white p-4 shadow-lg xl:h-[10vw]">
-            {Data.map((bilty) => (
+            {Data.map((billty) => (
               <div
-                key={bilty.id}
+                key={billty.id}
                 className=" mb-3 flex items-center space-x-3 "
               >
                 <input
                   type="checkbox"
-                  id={`bilty-${bilty.id}`}
+                  id={`billty-${billty.id}`}
                   checked={selectedData.some(
-                    (selected) => selected.id === bilty.id,
+                    (selected) => selected.id === billty.id,
                   )}
-                  onChange={() => handleCheckboxChange(bilty.id)}
+                  onChange={() => handleCheckboxChange(billty.id)}
                   className="h-5 w-5 rounded-md text-primary focus:ring-2 focus:ring-primary dark:text-secondary dark:focus:ring-secondary"
                 />
                 <label
-                  htmlFor={`bilty-${bilty.id}`}
+                  htmlFor={`billty-${billty.id}`}
                   className="font-medium text-black "
                 >
-                  {bilty.biltyNo}
+                  {billty.billtyNo}
                 </label>
               </div>
             ))}
@@ -187,26 +187,26 @@ const FormPage: React.FC = () => {
                     </thead>
 
                     <tbody className="bg-white">
-                      {selectedData.map((bilty, rowIndex) => (
+                      {selectedData.map((billty, rowIndex) => (
                         <tr
-                          key={bilty.id}
+                          key={billty.id}
                           className="transition duration-200 hover:bg-gray-50"
                         >
-                          <td className="p-4">{bilty.id}</td>
-                          <td className="p-4">{bilty.biltyNo}</td>
-                          <td className="p-4">{bilty.biltyDate}</td>
-                          <td className="p-4">{bilty.customerName}</td>
-                          <td className="p-4">{bilty.freightAmount}</td>
-                          <td className="p-4">{bilty.cgst}</td>
-                          <td className="p-4">{bilty.sgst}</td>
-                          <td className="p-4">{bilty.igst}</td>
-                          <td className="p-4">{bilty.totalFreight}</td>
-                          <td className="p-4">{bilty.onAccountPayment}</td>
-                          <td className="p-4">{bilty.damageClaimDeduct}</td>
-                          <td className="p-4">{bilty.tds}</td>
-                          <td className="p-4">{bilty.finalReceived}</td>
-                          <td className="p-4">{bilty.receivedDate}</td>
-                          <td className="p-4">{bilty.remarks}</td>
+                          <td className="p-4">{billty.id}</td>
+                          <td className="p-4">{billty.billtyNo}</td>
+                          <td className="p-4">{billty.billtyDate}</td>
+                          <td className="p-4">{billty.customerName}</td>
+                          <td className="p-4">{billty.freightAmount}</td>
+                          <td className="p-4">{billty.cgst}</td>
+                          <td className="p-4">{billty.sgst}</td>
+                          <td className="p-4">{billty.igst}</td>
+                          <td className="p-4">{billty.totalFreight}</td>
+                          <td className="p-4">{billty.onAccountPayment}</td>
+                          <td className="p-4">{billty.damageClaimDeduct}</td>
+                          <td className="p-4">{billty.tds}</td>
+                          <td className="p-4">{billty.finalReceived}</td>
+                          <td className="p-4">{billty.receivedDate}</td>
+                          <td className="p-4">{billty.remarks}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -263,7 +263,7 @@ const FormPage: React.FC = () => {
         </div>
       ) : (
         <div className="item-center text-center font-semibold text-gray-500">
-          Select Bilty(s) to view details.
+          Select billty(s) to view details.
         </div>
       )}
     </>
